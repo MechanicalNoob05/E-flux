@@ -5,22 +5,27 @@ import Ionicons from '@expo/vector-icons/Ionicons'
 import Stats from '../Screens/Tab Screens/Stats Page/Stats';
 import Replacement from '../Screens/Tab Screens/Replacement Page/Replacement';
 
+
+
 const Tab = createBottomTabNavigator();
 
-function MyTabs() {
+function MyTabs(props) {
+
+    const { navigation } = props
     return (
         <Tab.Navigator
+
             screenOptions={
-                {
-                    headerShown: false,
+                {   headerShown:false,
                     tabBarStyle: { paddingBottom: 20 }
                 }
             }
         >
             <Tab.Screen name="Map" component={Map} />
-            <Tab.Screen name="Profile" component={Profile} />
             <Tab.Screen name="stats" component={Stats} />
-            <Tab.Screen name="Rep" component={Replacement} />
+            <Tab.Screen name="Rep"component={Replacement}/>
+            <Tab.Screen name="Profile" component={Profile}
+                 />
         </Tab.Navigator>
     );
 }
