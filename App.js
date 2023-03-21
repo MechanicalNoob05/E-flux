@@ -1,13 +1,13 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import MyStack from './Routes/StackNavigator';
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text style={styles.txt}>Mayuri Jadhav Darling,</Text>
-      <Text style={styles.txt}>Manisha Singh Darling</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <MyStack />
+    </NavigationContainer>
   );
 }
 
@@ -18,8 +18,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  txt:{
-    fontSize:30,
-    fontWeight:900,
+  txt: {
+    fontSize: 30,
+    fontWeight: 900,
   }
 });
