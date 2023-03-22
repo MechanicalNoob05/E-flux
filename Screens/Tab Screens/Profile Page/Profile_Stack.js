@@ -5,7 +5,11 @@ import { createStackNavigator } from '@react-navigation/stack';
 import Profile from './Profile Stack/Profile_Option_Page/Profile';
 import Account from './Profile Stack/Account Page/Account';
 import Password from './Profile Stack/Password Page/Password';
-
+import About from './Profile Stack/About Us/About';
+import Contact from './Profile Stack/Contact Us/Contact';
+import CurrentBooking from './Profile Stack/Current Booking/CurrentBooking';
+import FAQ from './Profile Stack/FAQ/FAQ';
+import History from './Profile Stack/History/History';
 const PStack = createStackNavigator();
 
 const Map = (props) => {
@@ -29,6 +33,8 @@ const Map = (props) => {
           component={Password}
           options={{ headerShown: false }}
         />
+        
+             
       </PStack.Navigator>
     </NavigationContainer>
   )
