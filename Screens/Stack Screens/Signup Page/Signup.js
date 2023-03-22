@@ -1,103 +1,170 @@
 import React from 'react'
-import { ApplicationProvider, Layout, Text, Input, Divider,Button } from '@ui-kitten/components';
-import * as eva from '@eva-design/eva';
-import { StyleSheet,  } from 'react-native';
-import { ScrollView } from 'react-native-gesture-handler';
+import { Image, StatusBar } from 'react-native'
+import { ScrollView } from 'react-native'
+import { SafeAreaView } from 'react-native'
+import { TextInput } from 'react-native'
+import { StyleSheet, View, Text, Button} from 'react-native'
 const Signup = (props) => {
-  const [value, setValue] = React.useState('');
-  const [pass, setPass] = React.useState('');
+  const [text, onChangeText] = React.useState('');
+  const [name, onChangeName] = React.useState('');
+  const [phone, onChangePhone] = React.useState('');
+  const [car, onChangeCar] = React.useState('');
+  const [carnumber, onChangeCarnumber] = React.useState('');
+  const [pass, onChangePass] = React.useState('');
+
   const { navigation } = props
+    return (
+      <ScrollView>
+      <SafeAreaView>
 
-  return (
-    <ApplicationProvider {...eva} theme={eva.light}>
-          <ScrollView>
-
-      <Layout style={{ flex: 1, paddingTop: 45, padding: 10,  justifyContent:'center' , alignContent:'center'  }}>
-      <Text category='h3' style={styles.title}>Hello 👋 </Text>
-
-        <Text category='h2' style={{ marginBottom: 15, textAlign:'center'}}>
-          Create a New Account
-          </Text>
-
-          <Layout style={styles.container} level='1'>
-
-<Input
-  style={styles.input}
-  placeholder='First Name'
-  onChangeText={nextValue => setValue(nextValue)}
-  label='First Name'
-/>
-
-<Input
-  style={styles.input}
-  placeholder='Last name'
-  label='Last Name'
-/>
-
-</Layout>
-        <Input style={{ padding: 10 }}
-          placeholder='demonslayer@emmail.com'
-          value={value}
-          label='Email'
-          onChangeText={nextValue => setValue(nextValue)}
-        />
-         <Input style={{ padding: 10 }}
-          placeholder='Tesla 3s'
+        <View style={styles.container}>
           
-          label='Car Model'
-        />
-         <Input style={{ padding: 10 }}
-          placeholder='eg. MHCET106'
-          caption='this will help us to create more customizations for you'
-          label='Car Number'
-        />
-        <Input style={{ padding: 10 }}
-          type='password'
-          placeholder='***********'
-          value={pass}
-          label='Password'
-          onChangeText={nextValue => setPass(nextValue)}
-        />
-        <Button style={styles.installButton} title='sign Up'>Sign Up</Button>
-        <Divider />
+        <StatusBar
+        auto
+        animated={true}
+        backgroundColor="#61dafb"
+       
+      />
       
-          <Text style={styles.signuptext}>
-           Already have an Account? Please <Text status='primary'
-              onPress={() => navigation.navigate('Login')}>Sign In</Text>
-          </Text>
-      </Layout>
-</ScrollView>
-    </ApplicationProvider>
-  )
-}
+            <Text style={styles.text}>Hello 👋, {text}</Text>
+            <Text style={styles.text2}>Create a New Account</Text>
+{/* First Name */}
+            <View style={styles.inputview}>
+            <Text for="fname">First Name</Text>
+            <TextInput
+            placeholder='John'
+            label='First Name'
+        style={styles.input}
+        onChangeText={onChangeText}
+        value={text}
+      />
+            </View>
+            {/* Last Name */}
+            <View style={styles.inputview}>
+            <Text for="fname">Last Name</Text>
+            <TextInput
+            placeholder='Doe'
+            label='First Name'
+        style={styles.input}
+        onChangeText={onChangeName}
+        value={name}
+      />
+            </View>
+{/* Mobile */}
+            <View style={styles.inputview}>
+            <Text for="fname">Phone Number</Text>
+            <TextInput
+            placeholder='+91 91341656'
+            label='First Name'
+            keyboardType="numeric"
 
-const styles = StyleSheet.create({
-  signuptext:{
-    flex: 1, alignContent:'center',
-    marginTop: 15,
-    textAlign: 'center'
+        style={styles.input}
+        onChangeText={onChangePhone}
+        value={phone}
+      />
+            </View>
+
+{/* Car number */}
+            <View style={styles.inputview}>
+            <Text for="fname">Car number</Text>
+            <TextInput
+            placeholder='Car Number'
+            label='First Name'
+        style={styles.input}
+        onChangeText={onChangeCarnumber}
+        value={carnumber}
+      />
+            </View>
+
+{/* Car Name */}
+            <View style={styles.inputview}>
+            <Text for="fname">Car Name</Text>
+            <TextInput
+            placeholder='Car Name'
+            label='First Name'
+        style={styles.input}
+        onChangeText={onChangeCar}
+        value={car}
+      />
+            </View>
+
+
+{/* Password */}
+            <View style={styles.inputview}>
+            <Text for="fname">Password</Text>
+            <TextInput
+            secureTextEntry={true}
+            placeholder='**********'
+            label='First Name'
+        style={styles.input}
+        onChangeText={onChangePass}
+        value={pass}
+      />
+            </View>
+<View style={{marginTop: 20, height: 50}}>
+<Button
+      style={
+        { 
+          height: 50,
+          
+        }
+      }
+  title="Sign Up"
+/>
+</View>
+
+<View style={{flexDirection: 'row', alignItems: 'center'}}>
+  <View style={{flex: 1, height: 1, backgroundColor: 'black'}} />
+  <View>
+    <Text style={{width: 50, textAlign: 'center'}}>or</Text>
+  </View>
+  <View style={{flex: 1, height: 1, backgroundColor: 'black'}} />
+</View>
+
+<View>
+<Text  style={{textAlign:'center'}}>Already Have an Account? <Text style={{color: 'blue'}} onPress={() => navigation.navigate('Login')}>Sign In</Text></Text>
+
+</View>
+
+        </View>
+
+        </SafeAreaView>
+
+        </ScrollView>
+        )
+}
+const styles = StyleSheet.create({ 
+  button:{
+    height: 10,
+  
+  
+
   },
-  details: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginVertical: 4,
+  inputview:{
+    marginTop: 10,
   },
-  title: {
-    marginBottom: 45,
-    marginHorizontal: 8,
-    textAlign:'center'
+  container: { 
+    padding: 24
+   },
+  text:{
+    top: 20,
+    fontSize: 30,
+    textAlign: 'center',
   },
-  installButton: {
-    marginVertical: 4,
-    marginBottom: 10
-  },
-  container: {
-    flexDirection: 'row',
-    padding: 10
+  text2:{
+    padding: 20,
+    fontSize: 25,
+    fontWeight: 400,
+    textAlign: 'center',
   },
   input: {
-    flex: 1,
-    margin: 2,
+    height: 40,
+    borderWidth: 1,
+    borderColor: '#f8f8f8',
+    backgroundColor: '#e8e8e8',
+    
+    padding: 10,
+    borderRadius: 5
   },
-});
+})
 export default Signup

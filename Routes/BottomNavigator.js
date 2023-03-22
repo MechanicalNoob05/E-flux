@@ -21,9 +21,9 @@ function MyTabs(props) {
                 }
             }
         >
-            <Tab.Screen name="Map" component={Map} />
-            <Tab.Screen name="stats" component={Stats} />
-            <Tab.Screen name="Rep"component={Replacement}/>
+            <Tab.Screen name="Home" screenOptions={{headerShown:false}} component={Map} />
+            <Tab.Screen name="Vehicle" component={Stats} />
+            <Tab.Screen name="Notifications"component={Replacement}/>
             <Tab.Screen name="Profile" component={Profile}
                  />
         </Tab.Navigator>
