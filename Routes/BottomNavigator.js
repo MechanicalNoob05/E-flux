@@ -17,15 +17,15 @@ function MyTabs(props) {
 
             screenOptions={
                 {   headerShown:false,
-                    tabBarStyle: { paddingBottom: 20 }
+                    tabBarStyle: { paddingBottom: 0 },
+                    tabBarActiveTintColor:'blue'
                 }
             }
         >
-            <Tab.Screen name="Map" component={Map} />
-            <Tab.Screen name="stats" component={Stats} />
-            <Tab.Screen name="Rep"component={Replacement}/>
-            <Tab.Screen name="Profile" component={Profile}
-                 />
+            <Tab.Screen name="Map" component={Map} options={{tabBarIcon:()=><Ionicons name='map-outline' size={20}/>,tabBarShowLabel:false,tabBarActiveBackgroundColor:'blue'}}/>
+            <Tab.Screen name="stats" component={Stats} options={{tabBarIcon:()=><Ionicons name='stats-chart-outline' size={20}/>,tabBarShowLabel:false,tabBarActiveBackgroundColor:'blue'}}/>
+            <Tab.Screen name="Rep"component={Replacement}options={{tabBarIcon:()=><Ionicons name='repeat-outline' size={20}/>,tabBarShowLabel:false,tabBarActiveBackgroundColor:'blue'}}/>
+            <Tab.Screen name="Profile" component={Profile} options={{tabBarIcon:()=><Ionicons name='person-outline' size={20}/>,tabBarShowLabel:false,tabBarActiveBackgroundColor:'blue'}}/>
         </Tab.Navigator>
     );
 }
