@@ -1,8 +1,5 @@
 import React from 'react'
 import { StyleSheet, View, Text, Button} from 'react-native'
-import Mapbox from '@rnmapbox/maps';
-
-Mapbox.setAccessToken('pk.eyJ1IjoidGhlZGlzY291bnRjb3Vwb24iLCJhIjoiY2xmOHI1NDRxMDE3ZDN4cWtlejY3ZGxuMiJ9.4YSA8wKeiyoPuNvSHNH1FA');
 
 const Chargeup = (props) => {
 
@@ -15,7 +12,6 @@ const Chargeup = (props) => {
                 onPress={() => navigation.navigate('M_Display')} /> */}
                  <View style={styles.page}>
       <View style={styles.container}>
-        <Mapbox.MapView style={styles.map} />
       </View>
     </View>
         </View>)

@@ -9,6 +9,7 @@ import Contact from './Profile Stack/Contact Us/Contact';
 import CurrentBooking from './Profile Stack/Current Booking/CurrentBooking';
 import FAQ from './Profile Stack/FAQ/FAQ';
 import History from './Profile Stack/History/History';
+import Help from './Profile Stack/Help/Help';
 const PStack = createStackNavigator();
 
 const Map = (props) => {
@@ -32,7 +33,36 @@ const Map = (props) => {
           component={Password}
           options={{ headerShown: false }}
         />
-        
+          <PStack.Screen
+          name="About"
+          component={About}
+          options={{ headerShown: false }}
+        />
+        <PStack.Screen
+          name='Contact'
+          component={Contact}
+          options={{ headerShown: false }}
+        />
+        <PStack.Screen
+          name='CurrentBooking'
+          component={CurrentBooking}
+          options={{ headerShown: false }}
+        />
+        <PStack.Screen
+          name='FAQ'
+          component={FAQ}
+          options={{ headerShown: false }}
+        />
+        <PStack.Screen
+          name='History'
+          component={History}
+          options={{ headerShown: false }}
+        />
+        <PStack.Screen
+        name='Help'
+        component={Help}
+        options={{ headerShown: false }}
+      />
              
       </PStack.Navigator>
     </NavigationContainer>

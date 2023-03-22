@@ -33,7 +33,7 @@ function MyTabs(props) {
                 }
             />
             <Tab.Screen
-                name="stats"
+                name="Stats"
                 component={Stats}
                 options={
                     {
@@ -43,7 +43,7 @@ function MyTabs(props) {
                 }
             />
             <Tab.Screen
-                name="Rep"
+                name="Swap"
                 component={Replacement}
                 options={
                     {

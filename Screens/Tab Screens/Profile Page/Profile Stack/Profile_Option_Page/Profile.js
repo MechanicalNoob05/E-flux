@@ -21,22 +21,22 @@ const Profile = (props) => {
         {
             title: 'Current Booking',
             icon: 'snow-outline',
-            link: 'Password'
+            link: 'CurrentBooking'
         },
         {
             title: 'History',
             icon: 'play-back',
-            link: 'Password'
+            link: 'History'
         },
         {
             title: 'FAQ',
             icon: 'help-circle',
-            link: 'Password'
+            link: 'FAQ'
         },
         {
             title: 'Help',
             icon: 'help-buoy',
-            link: 'Password'
+            link: 'Help'
         },
 
 
@@ -85,6 +85,8 @@ const Profile = (props) => {
             <View >
 
                 <ListItem topDivider 
+
+onPress={()=>navigation.navigate('About')}
                     bottomDivider
                     Component={TouchableScale}
                     friction={70} //
@@ -97,6 +99,7 @@ const Profile = (props) => {
                     <ListItem.Chevron />
                 </ListItem>
                 <ListItem bottomDivider 
+onPress={()=>navigation.navigate('Contact')}
                     Component={TouchableScale}
                     friction={70} //
                     tension={100} // These props are passed to the parent component (here TouchableScale)
