@@ -1,5 +1,4 @@
 import React from 'react'
-import { StyleSheet, View, Text } from 'react-native'
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import Profile from './Profile Stack/Profile_Option_Page/Profile';
@@ -33,7 +32,6 @@ const Map = (props) => {
     </NavigationContainer>
   )
 }
-const styles = StyleSheet.create({ container: { padding: 24 } })
 export default Map
 
 

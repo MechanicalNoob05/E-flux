@@ -7,19 +7,40 @@ import Signup from '../Screens/Stack Screens/Signup Page/Signup';
 
 const Stack = createStackNavigator();
 
-function MyStack(props) {
+function MyStack() {
 
-  const { navigation } = props
-  const handleclick = (e) => {
-    e.preventDefault()
-    navigation.navigate('Login')
-}
   return (
     <Stack.Navigator initialRouteName='Login'>
-        {/* Add Screens Below for Stack*/}
-      <Stack.Screen name="Login" component={Login} options={{headerShown:false}} />
-      <Stack.Screen name="Signup" component={Signup} options={{headerShown:false}} />
-      <Stack.Screen name="Home" component={Home}  options={{title:false,headerBackTitle:'a', headerBackImage: () => <Ionicons name='log-out-outline' size={30}></Ionicons> }}/>
+      {/* Add Screens Below for Stack*/}
+      <Stack.Screen
+        name="Login"
+        component={Login}
+        options={
+          {
+            headerShown: false
+          }
+        }
+      />
+      <Stack.Screen
+        name="Signup"
+        component={Signup}
+        options={
+          {
+            headerShown: false
+          }
+        }
+      />
+      <Stack.Screen
+        name="Home"
+        component={Home}
+        options={
+          {
+            title: false,
+            headerBackTitle: 'a',
+            headerBackImage: () => <Ionicons name='log-out-outline' size={30}></Ionicons>
+          }
+        }
+      />
       {/* <Stack.Screen name="Chargeup" component={Chargeup} options={{headerShown:false}} /> */}
     </Stack.Navigator>
   );
