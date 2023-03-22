@@ -42,8 +42,26 @@ function MyTabs(props) {
                     }
                 }
             />
-            <Tab.Screen name="Rep" component={Replacement} options={{ tabBarIcon: () => <Ionicons name='repeat-outline' size={20} />, tabBarShowLabel: true, tabBarActiveBackgroundColor: '#ebeef2' }} />
-            <Tab.Screen name="Profile" component={Profile_Stack} options={{ tabBarIcon: () => <Ionicons name='person-outline' size={20} />, tabBarShowLabel: true, tabBarActiveBackgroundColor: '#ebeef2' }} />
+            <Tab.Screen
+                name="Rep"
+                component={Replacement}
+                options={
+                    {
+                        tabBarIcon: () => <Ionicons name='repeat-outline' size={20} />,
+                        tabBarShowLabel: true, tabBarActiveBackgroundColor: '#ebeef2'
+                    }
+                }
+            />
+            <Tab.Screen
+                name="Profile"
+                component={Profile_Stack}
+                options={
+                    {
+                        tabBarIcon: () => <Ionicons name='person-outline' size={20} />,
+                        tabBarShowLabel: true, tabBarActiveBackgroundColor: '#ebeef2'
+                    }
+                }
+            />
         </Tab.Navigator>
     );
 }
