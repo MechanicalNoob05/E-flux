@@ -36,7 +36,7 @@ const Login = (props) => {
               onPress={() => navigation.navigate('Signup')}>Sign Up</Text>
           </Text>
 
-          <Text onPress={() => navigation.navigate('Home',{name:"Map"})}> Home router</Text>
+          <Text name="Home" onPress={() => navigation.navigate('Home',{name:"Map"})}> Home router</Text>
       </Layout>
     </ApplicationProvider>
 
@@ -61,8 +61,10 @@ const styles = StyleSheet.create({
     textAlign:'center'
   },
   installButton: {
-    marginVertical: 4,
-    marginBottom: 10
+    marginHorizontal: 10,
+    padding: 10,
+    marginVertical: 10,
+    marginBottom: 15
   },
 });
 export default Login

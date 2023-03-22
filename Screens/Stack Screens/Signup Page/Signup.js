@@ -19,11 +19,22 @@ const Signup = (props) => {
           Create a New Account
           </Text>
 
-          <Input style={{ padding: 10 }}
-          placeholder='John Doe'
-          
-          label='Name'
-        />
+          <Layout style={styles.container} level='1'>
+
+<Input
+  style={styles.input}
+  placeholder='First Name'
+  onChangeText={nextValue => setValue(nextValue)}
+  label='First Name'
+/>
+
+<Input
+  style={styles.input}
+  placeholder='Last name'
+  label='Last Name'
+/>
+
+</Layout>
         <Input style={{ padding: 10 }}
           placeholder='demonslayer@emmail.com'
           value={value}
@@ -57,7 +68,6 @@ const Signup = (props) => {
       </Layout>
 </ScrollView>
     </ApplicationProvider>
-
   )
 }
 
@@ -80,6 +90,14 @@ const styles = StyleSheet.create({
   installButton: {
     marginVertical: 4,
     marginBottom: 10
+  },
+  container: {
+    flexDirection: 'row',
+    padding: 10
+  },
+  input: {
+    flex: 1,
+    margin: 2,
   },
 });
 export default Signup
