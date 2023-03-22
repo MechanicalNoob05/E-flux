@@ -21,32 +21,27 @@ const Profile = (props) => {
         {
             title: 'Current Booking',
             icon: 'snow-outline',
-            link: 'Account'
+            link: 'Password'
         },
         {
             title: 'History',
             icon: 'play-back',
-            link: 'Account'
+            link: 'Password'
         },
         {
             title: 'FAQ',
             icon: 'help-circle',
-            link: 'Account'
+            link: 'Password'
         },
         {
             title: 'Help',
             icon: 'help-buoy',
-            link: 'Account'
+            link: 'Password'
         },
 
 
     ]
-    const list1 = [
-        {
-            title: 'About Company',
-            icon: 'trophy-outline'
-        }
-    ]
+
     const { navigation } = props
     return (
 
@@ -89,7 +84,7 @@ const Profile = (props) => {
             <View style={{ marginTop: 3 }}></View>
             <View >
 
-                <ListItem topDivider
+                <ListItem topDivider 
                     bottomDivider
                     Component={TouchableScale}
                     friction={70} //
@@ -101,7 +96,7 @@ const Profile = (props) => {
                     </ListItem.Content>
                     <ListItem.Chevron />
                 </ListItem>
-                <ListItem bottomDivider
+                <ListItem bottomDivider 
                     Component={TouchableScale}
                     friction={70} //
                     tension={100} // These props are passed to the parent component (here TouchableScale)
@@ -112,6 +107,8 @@ const Profile = (props) => {
                     </ListItem.Content>
                     <ListItem.Chevron />
                 </ListItem>
+
+                
 
             </View>
 
