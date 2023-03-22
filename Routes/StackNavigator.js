@@ -21,6 +21,7 @@ function MyStack(props) {
       <Stack.Screen name="Signup" component={Signup} options={{headerShown:false}} />
       <Stack.Screen name="Home" component={Home}  
       />
+      <Stack.Screen name="Home" component={Home}  options={{title:false,headerBackTitle:'a', headerBackImage: () => <Ionicons name='log-out-outline' size={30}></Ionicons> }}/>
       {/* <Stack.Screen name="Chargeup" component={Chargeup} options={{headerShown:false}} /> */}
     </Stack.Navigator>
   );
