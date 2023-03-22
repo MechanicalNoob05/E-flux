@@ -63,7 +63,7 @@ const styles = StyleSheet.create({
   installButton: {
     marginHorizontal: 10,
     padding: 10,
-    marginVertical: 10,
+    marginVertical: 103,
     marginBottom: 15
   },
 });
