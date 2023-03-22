@@ -25,10 +25,15 @@ app.use('/app/getstation',require('./routes/Get/Getstation'))
 app.use('/app/getcustomer',require('./routes/Get/Getcustomer'))
 app.use('/app/getbooking',require('./routes/Get/Getbookings'))
 app.use('/app/getreview',require('./routes/Get/Getreview'))
+app.use('/app/gethistory',require('./routes/Get/Gethistory'))
 
 
 app.use('/app/deletebooking',require('./routes/Delete/Deletebooking'))
 app.use('/app/deletebatterybooking',require('./routes/Delete/Deletebatterybooking'))
+
+
+app.use('/app/update',require('./routes/update/updatecustomer'))
+app.use('/app/changepassword',require('./routes/update/updatepassword'))
 
 app.listen(process.env.PORT||port, () => {
   console.log(`Example app listening on port ${port}`)

@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const bookingModel = require('../../models/Booking');
+const historyModel = require('../../models/History');
 const deleterequestModel = require('../../models/Deleterequest');
 var fetchuser = require('../../middleware/fetch')
 router.post('/',fetchuser,async(req, res) => {
@@ -19,6 +20,14 @@ router.post('/',fetchuser,async(req, res) => {
             Bookings:Bookingid
         });
         const savedBooking = await Deleterequests.save();
+        
+        const history = new historyModel({
+          Timeslot: saved[0].Timeslot,
+          Slot: saved[0].Slot,
+          Station: saved[0].Station,
+          Customer:saved[0].Customer
+      });
+      const savedhistory = await history.save();
         let filter = {_id: Bookingid};
         let update = {Deletestatus: true};
         let savedstation = await bookingModel.findOneAndUpdate(filter, update ,{new : true});
