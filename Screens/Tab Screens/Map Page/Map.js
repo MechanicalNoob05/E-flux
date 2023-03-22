@@ -1,30 +1,40 @@
-import React from 'react'
-import { StyleSheet, View, Text } from 'react-native'
+import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
-import Chargeup from './ChargeStation Info Page/Chargeup';
-import Map_Display from './Map Display Page/Map_Display';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { BottomNavigation, BottomNavigationTab, Layout, Text } from '@ui-kitten/components';
 
-const MStack = createStackNavigator();
+const { Navigator, Screen } = createBottomTabNavigator();
 
-const Map = (props) => {
+const UsersScreen = () => (
+  <Layout style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+    <Text category='h1'>USERS</Text>
+  </Layout>
+);
 
-  const { navigation } = props
-  return (
-    <NavigationContainer independent={true} >
-      <MStack.Navigator>
-        <MStack.Screen
-          name="Chargeup"
-          component={Chargeup}
-          options={{ headerShown: false }}
-        />
-        <MStack.Screen
-        name='M_Display'
-        component={Map_Display}
-        options={{headerShown:false}}/>
-      </MStack.Navigator>
-    </NavigationContainer>
-  )
-}
-const styles = StyleSheet.create({ container: { padding: 24 } })
-export default Map
+const OrdersScreen = () => (
+  <Layout style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+    <Text category='h1'>ORDERS</Text>
+  </Layout>
+);
+
+const BottomTabBar = ({ navigation, state }) => (
+  <BottomNavigation
+    selectedIndex={state.index}
+    onSelect={index => navigation.navigate(state.routeNames[index])}>
+    <BottomNavigationTab title='USERS'/>
+    <BottomNavigationTab title='ORDERS'/>
+  </BottomNavigation>
+);
+
+const TabNavigator = () => (
+  <Navigator tabBar={props => <BottomTabBar {...props} />}>
+    <Screen name='Users' component={UsersScreen}/>
+    <Screen name='Orders' component={OrdersScreen}/>
+  </Navigator>
+);
+
+export const AppNavigator = () => (
+  <NavigationContainer>
+    <TabNavigator/>
+  </NavigationContainer>
+);
