@@ -16,16 +16,34 @@ function MyTabs(props) {
         <Tab.Navigator
 
             screenOptions={
-                {   headerShown:false,
+                {
+                    headerShown: false,
                     tabBarStyle: { paddingBottom: 0 },
-                    tabBarActiveTintColor:'blue'
+                    tabBarActiveTintColor: 'blue'
                 }
             }
         >
-            <Tab.Screen name="Map" component={Map} options={{tabBarIcon:()=><Ionicons name='map-outline' size={20}/>,tabBarShowLabel:true,tabBarActiveBackgroundColor:'#ebeef2'}}/>
-            <Tab.Screen name="stats" component={Stats} options={{tabBarIcon:()=><Ionicons name='stats-chart-outline' size={20}/>,tabBarShowLabel:true,tabBarActiveBackgroundColor:'#ebeef2'}}/>
-            <Tab.Screen name="Rep"component={Replacement}options={{tabBarIcon:()=><Ionicons name='repeat-outline' size={20}/>,tabBarShowLabel:true,tabBarActiveBackgroundColor:'#ebeef2'}}/>
-            <Tab.Screen name="Profile" component={Profile} options={{tabBarIcon:()=><Ionicons name='person-outline' size={20}/>,tabBarShowLabel:true,tabBarActiveBackgroundColor:'#ebeef2'}}/>
+            <Tab.Screen
+                name="Map" component={Map}
+                options={
+                    {
+                        tabBarIcon: () => <Ionicons name='map-outline' size={20} />,
+                        tabBarShowLabel: true, tabBarActiveBackgroundColor: '#ebeef2'
+                    }
+                }
+            />
+            <Tab.Screen
+                name="stats"
+                component={Stats}
+                options={
+                    {
+                        tabBarIcon: () => <Ionicons name='stats-chart-outline' size={20} />,
+                        tabBarShowLabel: true, tabBarActiveBackgroundColor: '#ebeef2'
+                    }
+                }
+            />
+            <Tab.Screen name="Rep" component={Replacement} options={{ tabBarIcon: () => <Ionicons name='repeat-outline' size={20} />, tabBarShowLabel: true, tabBarActiveBackgroundColor: '#ebeef2' }} />
+            <Tab.Screen name="Profile" component={Profile_Stack} options={{ tabBarIcon: () => <Ionicons name='person-outline' size={20} />, tabBarShowLabel: true, tabBarActiveBackgroundColor: '#ebeef2' }} />
         </Tab.Navigator>
     );
 }

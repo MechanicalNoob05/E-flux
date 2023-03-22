@@ -15,7 +15,7 @@ const Profile = (props) => {
         {
             title: 'Password',
             icon: 'key-outline',
-            link: 'Account'
+            link: 'Password'
         },
 
         {
