@@ -3,6 +3,8 @@ import Home from '../Screens/Stack Screens/Home Page/Home';
 import Login from '../Screens/Stack Screens/Login Page/Login';
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import Signup from '../Screens/Stack Screens/Signup Page/Signup';
+import Admin from '../Screens/Stack Screens/Admin/Admin';
+import Admin_Home from '../Screens/Stack Screens/Admin/Admin Home page/Admin_Home';
 
 
 const Stack = createStackNavigator();
@@ -30,6 +32,24 @@ function MyStack() {
           }
         }
       />
+       <Stack.Screen
+        name="Admin"
+        component={Admin}
+        options={
+          {
+            headerShown: false
+          }
+        }
+      />
+      <Stack.Screen
+      name="Admin_home_page"
+      component={Admin_Home}
+      options={
+        {
+          headerShown: false
+        }
+      }
+    />
       <Stack.Screen
         name="Home"
         component={Home}

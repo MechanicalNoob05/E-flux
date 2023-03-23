@@ -2,30 +2,29 @@ import React from 'react'
 import { StyleSheet, View, Text, Button, TextInput } from 'react-native'
 const Password = (props) => {
 
-  const { navigation } = props
   return (
     <View style={styles.container}>
       <View style={styles.inputview}>
         <Text for="fname">Current password</Text>
         <TextInput
-          label='First Name'
           style={styles.input}
+          secureTextEntry={true}
         />
       </View>
 
       <View style={styles.inputview}>
         <Text for="fname">New password</Text>
         <TextInput
-          label='First Name'
           style={styles.input}
+          secureTextEntry={true}
         />
       </View>
 
       <View style={styles.inputview}>
         <Text for="fname">Confirm password</Text>
         <TextInput
-          label='First Name'
           style={styles.input}
+          secureTextEntry={true}
         />
       </View>
       <View style={{ marginTop: 20, height: 50 }}>

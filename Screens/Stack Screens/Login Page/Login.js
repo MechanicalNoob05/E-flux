@@ -78,6 +78,10 @@ const Signup = (props) => {
 
           </View>
 
+          <View>
+            <Text style={{ textAlign: 'center' }}>Admin entry? <Text style={{ color: 'blue' }} onPress={() => navigation.navigate('Admin')}>Login</Text></Text>
+
+          </View>
         </View>
 
       </SafeAreaView>
