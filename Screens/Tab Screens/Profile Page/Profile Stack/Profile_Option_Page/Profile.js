@@ -4,8 +4,15 @@ import { Avatar } from 'react-native-elements';
 import { ListItem } from 'react-native-elements'
 import TouchableScale from 'react-native-touchable-scale';
 import Ionicons from 'react-native-vector-icons/Ionicons'
+import * as SecureStore from 'expo-secure-store';
 
 const Profile = (props) => {
+    const [result, setResult] = React.useState('');
+    async function getValueFor(key) {
+        const result = await SecureStore.getItemAsync(key);
+        console.log(result)
+   
+    }
     const list = [
         {
             title: 'Account',
@@ -60,7 +67,7 @@ const Profile = (props) => {
 
                 </View>
                 <View>
-                    <Text style={styles.user}>Mayur Jadhav</Text>
+                    <Text style={styles.user}>Mayur Jadhav {getValueFor('secure_token')[0]}</Text>
                 </View>
             </View>
             <View>

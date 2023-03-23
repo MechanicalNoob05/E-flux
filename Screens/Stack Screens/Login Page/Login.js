@@ -4,11 +4,16 @@ import { ScrollView } from 'react-native'
 import { SafeAreaView } from 'react-native'
 import { TextInput } from 'react-native'
 import { StyleSheet, View, Text, Button } from 'react-native'
+import * as SecureStore from 'expo-secure-store';
 
+async function save(key, value) {
+  await SecureStore.setItemAsync('secure_token','sahdkfjaskdflas$%^&');
+
+}
 const Signup = (props) => {
   const [phone, onChangePhone] = React.useState('');
   const [pass, onChangePass] = React.useState('');
-
+  
   const { navigation } = props
   return (
     <ScrollView>
@@ -61,7 +66,7 @@ const Signup = (props) => {
 
                 }
               }
-              onPress={() => navigation.navigate('Home')}
+              onPress={() => { navigation.navigate('Home');}}
               title="Sign In"
             />
           </View>
@@ -79,14 +84,14 @@ const Signup = (props) => {
 
           </View>
 
-          <View>
-            <Text style={{ textAlign: 'center' }}>Admin entry? <Text style={{ color: 'blue' }} onPress={() => navigation.navigate('Admin')}>Login</Text></Text>
-
-          </View>
+       
         </View>
 
       </SafeAreaView>
+      <View>
+            <Text style={{ textAlign: 'center' }}>Admin entry? <Text style={{ color: 'blue' }} onPress={() => navigation.navigate('Admin')}>Login</Text></Text>
 
+          </View>
     </ScrollView>
   )
 }
