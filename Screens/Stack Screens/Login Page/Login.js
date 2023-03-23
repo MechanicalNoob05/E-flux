@@ -1,14 +1,38 @@
-import React from 'react'
-import { Image, StatusBar } from 'react-native'
+import React, { useEffect } from 'react'
+import { StatusBar } from 'react-native'
 import { ScrollView } from 'react-native'
 import { SafeAreaView } from 'react-native'
 import { TextInput } from 'react-native'
 import { StyleSheet, View, Text, Button } from 'react-native'
 
 const Signup = (props) => {
-  const [phone, onChangePhone] = React.useState('');
-  const [pass, onChangePass] = React.useState('');
+  const [Phonenumber, onChangePhone] = React.useState('');
+  const [Password, onChangePass] = React.useState('');
 
+
+  const handleclick = (e) => {
+    e.preventDefault();
+    login(Phonenumber,Password)
+  }
+  const login = async (Phonenumber,Password) => {
+    // Default options are marked with *
+    const response = await fetch('http://192.168.0.247:3001/app/login', {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json;charset=UTF-8",
+      },
+      // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+      body: JSON.stringify({ Phonenumber,Password }) // body data type must match "Content-Type" header
+    });
+    const json5 = await response.json()
+    // console.log(json5)
+    if (json5.jwttoken) {
+      navigation.navigate('Home')
+    } else {
+      console.log(json5)
+      alert("invalid")
+    }
+  }
   const { navigation } = props
   return (
     <ScrollView>
@@ -36,7 +60,7 @@ const Signup = (props) => {
 
               style={styles.input}
               onChangeText={onChangePhone}
-              value={phone}
+              value={Phonenumber}
             />
           </View>
 
@@ -50,7 +74,7 @@ const Signup = (props) => {
               label='First Name'
               style={styles.input}
               onChangeText={onChangePass}
-              value={pass}
+              value={Password}
             />
           </View>
           <View style={{ marginTop: 20, height: 50 }}>
@@ -61,7 +85,7 @@ const Signup = (props) => {
 
                 }
               }
-              onPress={() => navigation.navigate('Home')}
+              onPress={handleclick}
               title="Sign In"
             />
           </View>
