@@ -19,7 +19,7 @@ route.post('/',[body('Password','Enter a valid password').exists(),body('Phonenu
       }
       const passwordcompare= await bcrypt.compare(Password,Customer.Password)
       if (!passwordcompare) {
-        return res.status(400).json({success,errors: errors.array()});
+        return res.status(400).json({errors: errors.array()});
       }
       const data={
         Customer:{
