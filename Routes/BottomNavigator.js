@@ -14,12 +14,15 @@ function MyTabs(props) {
     const { navigation } = props
     return (
         <Tab.Navigator
-
+        
             screenOptions={
                 {
                     headerShown: false,
                     tabBarStyle: { paddingBottom: 0 },
-                    tabBarActiveTintColor: 'blue'
+                    tabBarActiveTintColor: 'blue',
+                    tabBarHideOnKeyboard: true,
+                    keyboardHidesTabBar: true
+
                 }
             }
         >
