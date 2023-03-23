@@ -20,6 +20,7 @@ app.use('/app/addbatterybooking',require('./routes/Add/Addbatterybooking'))
 app.use('/app/adddeleterequest',require('./routes/Add/Adddeleterequest'))
 app.use('/app/deletebatteryrequest',require('./routes/Add/deletebatteryrequest'))
 app.use('/app/login',require('./routes/Login'))
+app.use('/app/loginstation',require('./routes/Loginstation'))
 
 app.use('/app/getstation',require('./routes/Get/Getstation'))
 app.use('/app/getcustomer',require('./routes/Get/Getcustomer'))
