@@ -41,6 +41,7 @@ const Profile = (props) => {
 
 
     ]
+   
 
     const { navigation } = props
     return (
@@ -53,7 +54,7 @@ const Profile = (props) => {
                         size="xlarge"
                         source={{
                             uri:
-                                'https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg',
+                                'https://static.wikia.nocookie.net/naruto/images/b/bd/Indra_%C5%8Ctsutsuki.png/revision/latest/scale-to-width-down/1200?cb=20220214090844',
                         }}
                     />
 
