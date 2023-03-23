@@ -1,133 +1,39 @@
-import { ScrollView, View } from 'react-native'
 import React from 'react'
-import { Avatar, Icon, Image, ListItem, Text } from 'react-native-elements'
-import { StyleSheet } from 'react-native'
-import TouchableScale from 'react-native-touchable-scale'
-import Ionicons from 'react-native-vector-icons/Ionicons'
+import { StyleSheet, View, Text } from 'react-native'
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import List from './Repalcement Stack/Replacement List/List';
+import Battery_Details from './Repalcement Stack/Replacement Detail/Battery_Details';
 
-const Replacement = () => {
-  const list1 = [
-    {
-      name: 'Amy Farha',
-      uri: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Dwayne_Johnson_2014_%28cropped%29.jpg/640px-Dwayne_Johnson_2014_%28cropped%29.jpg',
-      location: 'Panvel'
+const RStack = createStackNavigator();
 
-    },
-    {
-      name: 'Chris Jackson',
-      uri: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Dwayne_Johnson_2014_%28cropped%29.jpg/640px-Dwayne_Johnson_2014_%28cropped%29.jpg',
-      location: 'Panvel'
-    },
-    {
-      name: 'Amy Farha',
-      uri: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Dwayne_Johnson_2014_%28cropped%29.jpg/640px-Dwayne_Johnson_2014_%28cropped%29.jpg',
-      location: 'Panvel'
+const Replacement = (props) => {
 
-    },
-    {
-      name: 'Chris Jackson',
-      uri: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Dwayne_Johnson_2014_%28cropped%29.jpg/640px-Dwayne_Johnson_2014_%28cropped%29.jpg',
-      location: 'Panvel'
-    },
-
-    {
-      name: 'Amy Farha',
-      uri: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Dwayne_Johnson_2014_%28cropped%29.jpg/640px-Dwayne_Johnson_2014_%28cropped%29.jpg',
-      location: 'Panvel'
-
-    },
-    {
-      name: 'Chris Jackson',
-      uri: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Dwayne_Johnson_2014_%28cropped%29.jpg/640px-Dwayne_Johnson_2014_%28cropped%29.jpg',
-      location: 'Panvel'
-    },
-
-    {
-      name: 'Amy Farha',
-      uri: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Dwayne_Johnson_2014_%28cropped%29.jpg/640px-Dwayne_Johnson_2014_%28cropped%29.jpg',
-      location: 'Panvel'
-
-    },
-    {
-      name: 'Chris Jackson',
-      uri: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Dwayne_Johnson_2014_%28cropped%29.jpg/640px-Dwayne_Johnson_2014_%28cropped%29.jpg',
-      location: 'Panvel'
-    },
-
-    {
-      name: 'Amy Farha',
-      uri: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Dwayne_Johnson_2014_%28cropped%29.jpg/640px-Dwayne_Johnson_2014_%28cropped%29.jpg',
-      location: 'Panvel'
-
-    },
-    {
-      name: 'Chris Jackson',
-      uri: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Dwayne_Johnson_2014_%28cropped%29.jpg/640px-Dwayne_Johnson_2014_%28cropped%29.jpg',
-      location: 'Panvel'
-    },
-
-    {
-      name: 'Amy Farha',
-      uri: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Dwayne_Johnson_2014_%28cropped%29.jpg/640px-Dwayne_Johnson_2014_%28cropped%29.jpg',
-      location: 'Panvel'
-
-    },
-    {
-      name: 'Chris Jackson',
-      uri: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Dwayne_Johnson_2014_%28cropped%29.jpg/640px-Dwayne_Johnson_2014_%28cropped%29.jpg',
-      location: 'Panvel'
-    },
-  ]
-
+  const { navigation } = props
   return (
-    <ScrollView>
-      <View style={styles.container}>
-        <Text h5 style={{ textAlign: 'center' }}>Click to See Nearby Charging Stations</Text>
-        <View>
-          {
-
-            list1.map((item, i) => (
-              <ListItem key={i} style={{ borderColor: '#f2f2f2', borderBottomWidth: 1, borderTopWidth: 1 }}
-                // onPress={()=>navigation.navigate(item.link)}
-
-                Component={TouchableScale}
-                friction={95} //
-                tension={100} // These props are passed to the parent component (here TouchableScale)
-                activeScale={0.95} >
-                <Image source={item.avatar_url} style={{ width: 40, height: 40 }}
-                />
-                <ListItem.Content>
-                  <ListItem.Title>{item.name}</ListItem.Title>
-                  <ListItem.Subtitle>
-
-                    <Ionicons name="location" style={{ width: 15 }} />
-                    <Text>{item.location}</Text>
-
-
-                  </ListItem.Subtitle>
-
-                </ListItem.Content>
-                <ListItem.Subtitle >350m</ListItem.Subtitle>
-              </ListItem>
-
-
-
-            ))
-          }
-        </View>
-
-
-      </View>
-      <Text style={{ textAlign: 'center' }}>End of the List</Text>
-    </ScrollView>
+    <NavigationContainer independent={true} >
+      <RStack.Navigator>
+        <RStack.Screen 
+        name='List' 
+        component={List}
+        options={{
+          headerShown:false
+        }}
+        ></RStack.Screen>
+        <RStack.Screen 
+        name='Battery_Detail' 
+        component={Battery_Details}
+        options={{
+          headerShown:false
+        }}
+        ></RStack.Screen>
+      </RStack.Navigator>
+    </NavigationContainer>
   )
 }
-const styles = StyleSheet.create({
-  container: {
-    backgroundColor: 'white',
-    padding: 10,
-
-  }
-})
-
+const styles = StyleSheet.create({ container: { padding: 24 } })
 export default Replacement
+
+
+
+
