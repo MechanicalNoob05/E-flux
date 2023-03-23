@@ -5,13 +5,40 @@ import { SafeAreaView } from 'react-native'
 import { TextInput } from 'react-native'
 import { StyleSheet, View, Text, Button } from 'react-native'
 const Signup = (props) => {
-  const [text, onChangeText] = React.useState('');
-  const [name, onChangeName] = React.useState('');
-  const [phone, onChangePhone] = React.useState('');
-  const [car, onChangeCar] = React.useState('');
-  const [carnumber, onChangeCarnumber] = React.useState('');
-  const [pass, onChangePass] = React.useState('');
+  const [Password, onChangePass] = React.useState('');
+  const [Phonenumber, onChangePhone] = React.useState('');
+  
+  const [Firstname, onChangeText] = React.useState('');
+  const [Lastname, onChangeName] = React.useState('');
+  const [Carname, onChangeCar] = React.useState('');
+  const [Carnumber, onChangeCarnumber] = React.useState('');
+  const [Cartype,onChangeCartype] = React.useState('')
+  const [Carmodel,onChangeCarmodel] = React.useState('')
 
+
+  const handleclick = (e) => {
+    e.preventDefault();
+    Signup(Firstname,Lastname,Phonenumber, Carname,Carmodel,Carnumber,Cartype,Password)
+  }
+  const Signup = async (Firstname,Lastname,Phonenumber, Carname,Carmodel,Carnumber,Cartype,Password) => {
+    // Default options are marked with *
+    const response = await fetch('http://192.168.0.247:3001/app/addcustomer', {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json;charset=UTF-8",
+      },
+      // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+      body: JSON.stringify({ Firstname,Lastname,Phonenumber, Carname,Carmodel,Carnumber,Cartype,Password }) // body data type must match "Content-Type" header
+    });
+    const json5 = await response.json()
+    // console.log(json5)
+    if (json5.savedCustomer) {
+      navigation.navigate('Login')
+    } else {
+      console.log(json5)
+      alert("invalid")
+    }
+  }
   const { navigation } = props
   return (
     <ScrollView>
@@ -26,7 +53,7 @@ const Signup = (props) => {
 
           />
 
-          <Text style={styles.text}>Hello 👋, {text}</Text>
+          <Text style={styles.text}>Hello 👋, {Firstname}</Text>
           <Text style={styles.text2}>Create a New Account</Text>
           {/* First Name */}
           <View style={styles.inputview}>
@@ -36,7 +63,7 @@ const Signup = (props) => {
               label='First Name'
               style={styles.input}
               onChangeText={onChangeText}
-              value={text}
+              value={Firstname}
             />
           </View>
           {/* Last Name */}
@@ -47,7 +74,7 @@ const Signup = (props) => {
               label='First Name'
               style={styles.input}
               onChangeText={onChangeName}
-              value={name}
+              value={Lastname}
             />
           </View>
           {/* Mobile */}
@@ -60,7 +87,7 @@ const Signup = (props) => {
 
               style={styles.input}
               onChangeText={onChangePhone}
-              value={phone}
+              value={Phonenumber}
             />
           </View>
 
@@ -72,7 +99,7 @@ const Signup = (props) => {
               label='First Name'
               style={styles.input}
               onChangeText={onChangeCarnumber}
-              value={carnumber}
+              value={Carnumber}
             />
           </View>
 
@@ -84,10 +111,33 @@ const Signup = (props) => {
               label='First Name'
               style={styles.input}
               onChangeText={onChangeCar}
-              value={car}
+              value={Carname}
             />
           </View>
 
+          {/* car type */}
+          <View style={styles.inputview}>
+            <Text for="fname">Car Type</Text>
+            <TextInput
+              placeholder='Car Type'
+              label='First Name'
+              style={styles.input}
+              onChangeText={onChangeCartype}
+              value={Cartype}
+            />
+          </View>
+
+          {/* car model*/}
+          <View style={styles.inputview}>
+            <Text for="fname">Car Model</Text>
+            <TextInput
+              placeholder='Car Model'
+              label='First Name'
+              style={styles.input}
+              onChangeText={onChangeCarmodel}
+              value={Carmodel}
+            />
+          </View>
 
           {/* Password */}
           <View style={styles.inputview}>
@@ -98,7 +148,7 @@ const Signup = (props) => {
               label='First Name'
               style={styles.input}
               onChangeText={onChangePass}
-              value={pass}
+              value={Password}
             />
           </View>
           <View style={{ marginTop: 20, height: 50 }}>
@@ -110,6 +160,7 @@ const Signup = (props) => {
                 }
               }
               title="Sign Up"
+              onPress={handleclick}
             />
           </View>
 
