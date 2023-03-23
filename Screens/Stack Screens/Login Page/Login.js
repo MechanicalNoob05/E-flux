@@ -4,6 +4,7 @@ import { ScrollView } from 'react-native'
 import { SafeAreaView } from 'react-native'
 import { TextInput } from 'react-native'
 import { StyleSheet, View, Text, Button } from 'react-native'
+
 const Signup = (props) => {
   const [phone, onChangePhone] = React.useState('');
   const [pass, onChangePass] = React.useState('');

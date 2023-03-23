@@ -1,20 +1,10 @@
+import { View, Text } from 'react-native'
 import React from 'react'
 import { StyleSheet, View, Text, Button, ScrollView } from 'react-native'
 import openMap from 'react-native-open-maps';
 import { WebView } from 'react-native-webview';
 
-const Chargeup = (props) => {
-  const map = () => {
-
-    openMap(
-      {
-        start: 'Plot No - 35, opp. Ganesh Mandir, Sector-5, Kharghar, Navi Mumbai, Maharashtra 410210',
-        end: "Plot No. 46, near MSEB Sub Station, Sector-5, Kharghar, Navi Mumbai, Maharashtra 410210",
-        travelType: 'drive',
-        navigate: true
-      }
-    )
-  }
+const Chargeup = () => {
   return (
 
     <ScrollView style={styles.container}>
@@ -50,5 +40,4 @@ const styles = StyleSheet.create({
     height: 700
   }
 
-})
 export default Chargeup
