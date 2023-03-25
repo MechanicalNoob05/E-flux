@@ -5,13 +5,13 @@ import { SafeAreaView } from 'react-native'
 import { TextInput } from 'react-native'
 import { StyleSheet, View, Text, Button } from 'react-native'
 import * as SecureStore from 'expo-secure-store';
+import ip from '../../../ip.json'
 
 async function save(key, value) {
-  await SecureStore.setItemAsync('secure_token','sahdkfjaskdflas$%^&');
+  await SecureStore.setItemAsync(key, value);
 
 }
 const Signup = (props) => {
-
 
 
   const [Phonenumber, onChangePhone] = React.useState('');
@@ -24,7 +24,7 @@ const Signup = (props) => {
   }
   const login = async (Phonenumber,Password) => {
     // Default options are marked with *
-    const response = await fetch('http://192.168.137.199:3001/app/login', {
+    const response = await fetch(`http://${ip.ip}:3001/app/login`, {
       method: "POST",
       headers: {
         "Content-type": "application/json;charset=UTF-8",
@@ -35,12 +35,15 @@ const Signup = (props) => {
     const json5 = await response.json()
     // console.log(json5)
     if (json5.jwttoken) {
+      save('jwt-token', json5.jwttoken)
       navigation.navigate('Home')
     } else {
       console.log(json5)
       alert("invalid")
     }
   }
+
+  
   const { navigation } = props
   return (
     <ScrollView>

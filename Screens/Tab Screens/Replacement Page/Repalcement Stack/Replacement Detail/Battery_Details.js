@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import { StyleSheet, View, Text, Button } from 'react-native'
+import ip from '../../../../../ip.json'
 
 const Battery_Details = ({ route, navigation }) => {
     const [Station, setStation] = useState([])
 
     const getStation = async (id) => {
         // Default options are marked with *
-        const response = await fetch('http://192.168.0.247:3001/app/getstationid', {
+        const response = await fetch(`http://${ip.ip}:3001/app/getstationid`, {
             method: "POST",
             headers: {
                 "Content-type": "application/json;charset=UTF-8",

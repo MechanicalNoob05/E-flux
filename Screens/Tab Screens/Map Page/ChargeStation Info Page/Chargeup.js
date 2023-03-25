@@ -8,6 +8,8 @@ import Ionicons from 'react-native-vector-icons/Ionicons'
 import openMap from 'react-native-open-maps';
 import { WebView } from 'react-native-webview';
 
+import ip from '../../../../ip.json'
+
 const Chargeup = (props) => {
   
   const { navigation } = props
@@ -15,7 +17,7 @@ const Chargeup = (props) => {
 
   const getStation = async () => {
     // Default options are marked with *
-    const response = await fetch('http://192.168.137.199:3001/app/getstation', {
+    const response = await fetch(`http://${ip.ip}:3001/app/getstation`, {
       method: "POST",
       headers: {
         "Content-type": "application/json;charset=UTF-8",
@@ -55,8 +57,8 @@ const Chargeup = (props) => {
                 friction={95} //
                 tension={100} // These props are passed to the parent component (here TouchableScale)
                 activeScale={0.95} >
-                <Image source={'https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Dwayne_Johnson_2014_%28cropped%29.jpg/640px-Dwayne_Johnson_2014_%28cropped%29.jpg'} style={{ width: 40, height: 40 }}
-                />
+                {/* <Image source={'https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Dwayne_Johnson_2014_%28cropped%29.jpg/640px-Dwayne_Johnson_2014_%28cropped%29.jpg'} style={{ width: 40, height: 40 }}
+                /> */}
                 <ListItem.Content>
                   <ListItem.Title>{perticular_station.Stationname}</ListItem.Title>
                   <ListItem.Subtitle>

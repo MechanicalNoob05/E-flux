@@ -1,18 +1,45 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { StyleSheet, View, Text, Image, ScrollView } from 'react-native'
 import { Avatar } from 'react-native-elements';
 import { ListItem } from 'react-native-elements'
 import TouchableScale from 'react-native-touchable-scale';
 import Ionicons from 'react-native-vector-icons/Ionicons'
-import * as SecureStore from 'expo-secure-store';
+import * as SecureStorage from 'expo-secure-store';
+import ip from '../../../../../ip.json'
 
 const Profile = (props) => {
-    const [result, setResult] = React.useState('');
+    const [profie,setProfile] = React.useState('{"Firstname":"" }')
+    const [token, settoken] = React.useState('');
     async function getValueFor(key) {
-        const result = await SecureStore.getItemAsync(key);
-        console.log(result)
-   
+        let result = await SecureStorage.getItemAsync(key);
+        if (result) {
+            settoken(result)
+        } else {
+        }
     }
+    
+    const getProfileInfo = async (token) => {
+        // Default options are marked with *
+        const response = await fetch(`http://${ip.ip}:3001/app/getcustomer`, {
+            method: "POST",
+            headers: {
+                "Content-type": "application/json;charset=UTF-8",
+                "auth-token": token
+            },
+            // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+            body: JSON.stringify({ }) // body data type must match "Content-Type" header
+        });
+        const json5 = await response.json()
+        // console.log(json5)
+        if (json5.savedcustomer) {
+            setProfile(json5.savedcustomer)
+        } else {
+        }
+    }
+    useEffect(() => {
+        getValueFor("jwt-token")
+        getProfileInfo(token)
+    }, [token])
     const list = [
         {
             title: 'Account',
@@ -48,7 +75,7 @@ const Profile = (props) => {
 
 
     ]
-   
+
 
     const { navigation } = props
     return (
@@ -67,15 +94,15 @@ const Profile = (props) => {
 
                 </View>
                 <View>
-                    <Text style={styles.user}>Mayur Jadhav {getValueFor('secure_token')[0]}</Text>
+                    <Text style={styles.user}>{profie.Firstname}</Text>
                 </View>
             </View>
             <View>
                 {
                     list.map((item, i) => (
-                        <ListItem key={i} 
-                        onPress={()=>navigation.navigate(item.link)}
-                        bottomDivider
+                        <ListItem key={i}
+                            onPress={() => navigation.navigate(item.link)}
+                            bottomDivider
                             Component={TouchableScale}
                             friction={70} //
                             tension={100} // These props are passed to the parent component (here TouchableScale)
@@ -92,9 +119,9 @@ const Profile = (props) => {
             <View style={{ marginTop: 3 }}></View>
             <View >
 
-                <ListItem topDivider 
+                <ListItem topDivider
 
-onPress={()=>navigation.navigate('About')}
+                    onPress={() => navigation.navigate('About')}
                     bottomDivider
                     Component={TouchableScale}
                     friction={70} //
@@ -106,8 +133,8 @@ onPress={()=>navigation.navigate('About')}
                     </ListItem.Content>
                     <ListItem.Chevron />
                 </ListItem>
-                <ListItem bottomDivider 
-onPress={()=>navigation.navigate('Contact')}
+                <ListItem bottomDivider
+                    onPress={() => navigation.navigate('Contact')}
                     Component={TouchableScale}
                     friction={70} //
                     tension={100} // These props are passed to the parent component (here TouchableScale)
@@ -119,7 +146,7 @@ onPress={()=>navigation.navigate('Contact')}
                     <ListItem.Chevron />
                 </ListItem>
 
-                
+
 
             </View>
 

@@ -4,6 +4,7 @@ import { Avatar, Icon, Image, ListItem, Text } from 'react-native-elements'
 import { StyleSheet } from 'react-native'
 import TouchableScale from 'react-native-touchable-scale'
 import Ionicons from 'react-native-vector-icons/Ionicons'
+import ip from '../../../../../ip.json'
 
 const List = (props) => {
 
@@ -12,7 +13,7 @@ const List = (props) => {
 
   const getStation = async () => {
     // Default options are marked with *
-    const response = await fetch('http://192.168.0.247:3001/app/getstation', {
+    const response = await fetch(`http://${ip.ip}:3001/app/getstation`, {
       method: "POST",
       headers: {
         "Content-type": "application/json;charset=UTF-8",
