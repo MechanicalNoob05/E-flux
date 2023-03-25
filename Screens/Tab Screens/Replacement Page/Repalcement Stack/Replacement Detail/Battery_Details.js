@@ -30,14 +30,13 @@ const Battery_Details = ({ route, navigation }) => {
     return (
         <View style={styles.container}>
 
-            {Station ? (Station.map((item) => {
+            {Station ? (Station.map((item,i) => {
                 return (
-                    <Text key={item.id} style={styles.text}>{item.Stationname}</Text>
+                    <Text key={i} style={styles.text}>{item.Stationname}</Text>
 
                 )
             })) : (<Text>Chutiyap</Text>)}
-            <Button title='='
-                onPress={() => navigation.navigate('List')} />
+           
         </View>)
 }
 const styles = StyleSheet.create({ container: { padding: 10 } })

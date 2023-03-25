@@ -6,7 +6,7 @@ import MapView, { Marker } from 'react-native-maps';
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import Swiper from 'react-native-swiper';
 import ip from '../../../../ip.json'
-
+import svg from '../../../../assets/charging-station-charger-svgrepo-com.svg'
 const { width, height } = Dimensions.get('window')
 const Chargeup = (props) => {
 
@@ -80,7 +80,9 @@ const Chargeup = (props) => {
 
             return (
               <Marker key={item._id} coordinate={{ latitude: parseFloat(item.Latitude), longitude: parseFloat(item.Longitude) }}
-                title={item.Stationname} description={item.Description}>
+                title={item.Stationname} description={item.Description}
+                image={svg}
+                >
 
 
               </Marker>
