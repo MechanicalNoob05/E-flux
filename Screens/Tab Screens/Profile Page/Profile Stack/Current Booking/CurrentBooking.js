@@ -3,7 +3,7 @@ import React, { useEffect } from 'react'
 import { StyleSheet, View, Button, ScrollView } from 'react-native'
 import { Divider, Text } from 'react-native-elements'
 import * as SecureStorage from 'expo-secure-store';
-import openMap from 'react-native-open-maps';
+
 import ip from '../../../../../ip.json'
 
 
@@ -22,9 +22,6 @@ const CurrentBooking = (props) => {
       settoken(result)
     } else {
     }
-  }
-  const map =  () => {
-    openMap({ start:"New York City, New York, NY",end:"SOHO, New York, NY",navigate:true});
   }
   const getBookings = async (token) => {
     // Default options are marked with *
@@ -53,7 +50,6 @@ const CurrentBooking = (props) => {
     setStation(booking.savedstationbooking)
     setBattery(booking.savedbatterybooking)
   }, [booking])
-  console.log(battery)
   const { navigation } = props
   return (
     <View style={styles.container}>
@@ -64,15 +60,24 @@ const CurrentBooking = (props) => {
             station ? (
               station.map((slot) => {
                 return (
-                  <View style={styles.card}>
+                  <View style={styles.card} key={slot._id}>
                     <Text h4 style={{ padding: 5 }}>
                       {slot.Station[0].Stationname}
                     </Text>
 
                     <Text> <Ionicons name='calendar-outline' /> 15 March</Text>
                     <Text> <Ionicons name='time' />{slot.Timeslot[0].Duration}</Text>
-                    <Button title='View Location on Maps' onPress={map
-                    }></Button>
+                    <Text> <Ionicons name='time' />{slot.Station[0].Stationaddress}</Text>
+                    {(slot.Deletestatus === false) ?
+                      <View style={styles.button_grp}>
+                        <Button title='Done' color={'#32cd32'}></Button>
+                        <Button title='Cancel' color={'#ff5733'}></Button>
+                      </View>
+                      :
+                      <View style={styles.button}>
+                        <Button title='pending' color={'#ffc300'}></Button>
+                      </View>
+                    }
                   </View>
                 )
               }))
@@ -91,7 +96,7 @@ const CurrentBooking = (props) => {
             battery ? (
               battery.map((slot) => {
                 return (
-                  <View style={styles.card}>
+                  <View style={styles.card} key={battery._id}>
                     <Text h4 style={{ padding: 5 }}>
                       {slot.Station[0].Stationname}
                     </Text>
@@ -99,7 +104,11 @@ const CurrentBooking = (props) => {
                     <Text> <Ionicons name='calendar-outline' /> 15 March</Text>
                     <Text> <Ionicons name='time' />{slot.Battery[0].Batteryname}</Text>
                     <Text> <Ionicons name='time' />{slot.Battery[0].Batterycapacity}</Text>
-                    <Button title='View Location on Maps'></Button>
+                    <Text> <Ionicons name='time' />{slot.Station[0].Stationaddress}</Text>
+                    <View style={styles.button_grp}>
+                      <Button title='Confirm' color={'#32cd32'}></Button>
+                      <Button title='Cancel' color={'#ff5733'}></Button>
+                    </View>
                   </View>
                 )
               }))
@@ -115,9 +124,9 @@ const CurrentBooking = (props) => {
     </View>)
 }
 const styles = StyleSheet.create({
-  container: { 
-    paddingHorizontal: 10, 
-    paddingBottom:50
+  container: {
+    paddingHorizontal: 10,
+    paddingBottom: 50
   },
 
   card: {
@@ -126,11 +135,19 @@ const styles = StyleSheet.create({
     borderRadius: 15,
     marginBottom: 10
   },
+  button_grp: {
+    flexDirection: 'row',
+    justifyContent: 'space-evenly',
+    paddingVertical: 25
+  },
   text: {
     fontSize: 20,
-    fontWeight:'bold',
-    marginVertical:10,
-    textAlign:'center'
+    fontWeight: 'bold',
+    marginVertical: 10,
+    textAlign: 'center'
+  },
+  button:{
+    paddingVertical:25
   }
 })
 export default CurrentBooking
