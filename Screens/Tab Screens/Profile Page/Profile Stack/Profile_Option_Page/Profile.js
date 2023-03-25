@@ -94,7 +94,7 @@ const Profile = (props) => {
 
                 </View>
                 <View>
-                    <Text style={styles.user}>{profie.Firstname}</Text>
+                    <Text style={styles.user}>{profie.Firstname} {profie.Lastname}</Text>
                 </View>
             </View>
             <View>

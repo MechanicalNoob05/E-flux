@@ -22,7 +22,7 @@ const Signup = (props) => {
   }
   const Signup = async (Firstname,Lastname,Phonenumber, Carname,Carmodel,Carnumber,Cartype,Password) => {
     // Default options are marked with *
-    const response = await fetch('http://192.168.0.247:3001/app/addcustomer', {
+    const response = await fetch('http://192.168.43.113:3001/app/addcustomer', {
       method: "POST",
       headers: {
         "Content-type": "application/json;charset=UTF-8",
