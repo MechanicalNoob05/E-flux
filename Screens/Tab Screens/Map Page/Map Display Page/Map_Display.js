@@ -5,16 +5,16 @@ import Ionicons from 'react-native-vector-icons/Ionicons'
 import ip from '../../../../ip.json'
 import * as SecureStorage from 'expo-secure-store'
 
+const image = { uri: "https://images.hindustantimes.com/img/2022/01/28/1600x900/4f422c8e-8072-11ec-862a-ad8c40546e4c_1643398983603.jpg" }
 const Map_Display = ({ route, navigation }) => {
   const [Station, setStation] = useState([])
   
-  // async function getValueFor(key) {
-  //   let result = await SecureStorage.getItemAsync(key);
-  //   if (result) {
-  //   } else {
-  //     alert('No values stored under that key.');
-  //   }
-  // }
+  async function getValueFor(key) {
+    let result = await SecureStorage.getItemAsync(key);
+    if (result) {
+    } else {
+    }
+  }
     const getStation = async (id) => {
       // Default options are marked with *
       const response = await fetch(`http://${ip.ip}:3001/app/getstationid`, {
@@ -32,7 +32,7 @@ const Map_Display = ({ route, navigation }) => {
       } else {
       }
     }
-    // getValueFor('jwt-token')
+    getValueFor('jwt-token')
     useEffect(() => {
       getStation(route.params.id)
     }, [])
@@ -43,6 +43,8 @@ const Map_Display = ({ route, navigation }) => {
         {Station ? (Station.map((item) => {
           return (
             <ScrollView>
+              <Image style={{ height: 250 }} source={image} >
+              </Image>
               <View style={{ flexDirection: 'row', alignItems: 'center' }}>
                 <View style={{ flex: 1, height: 1, backgroundColor: 'black' }} />
                 <View>

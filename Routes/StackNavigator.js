@@ -12,8 +12,20 @@ const Stack = createStackNavigator();
 function MyStack() {
 
   return (
-    <Stack.Navigator initialRouteName='Login'>
+    <Stack.Navigator initialRouteName='Login'
+      screenOptions={
+        {
+          headerShown: false,
+          tabBarStyle: { paddingBottom: 0 },
+          tabBarActiveTintColor: 'blue',
+          tabBarHideOnKeyboard: true,
+          keyboardHidesTabBar: true
+
+        }
+      }
+    >
       {/* Add Screens Below for Stack*/}
+
       <Stack.Screen
         name="Login"
         component={Login}
@@ -32,7 +44,7 @@ function MyStack() {
           }
         }
       />
-       <Stack.Screen
+      <Stack.Screen
         name="Admin"
         component={Admin}
         options={
@@ -42,14 +54,14 @@ function MyStack() {
         }
       />
       <Stack.Screen
-      name="Admin_home_page"
-      component={Admin_Home}
-      options={
-        {
-          headerShown: false
+        name="Admin_home_page"
+        component={Admin_Home}
+        options={
+          {
+            headerShown: false
+          }
         }
-      }
-    />
+      />
       <Stack.Screen
         name="Home"
         component={Home}
@@ -57,7 +69,7 @@ function MyStack() {
           {
             title: false,
             headerBackTitle: 'a',
-            headerBackImage: () => <Ionicons name='log-out-outline' size={30}></Ionicons>
+            headerLeft: false
           }
         }
       />

@@ -6,6 +6,7 @@ import { TextInput } from 'react-native'
 import { StyleSheet, View, Text, Button } from 'react-native'
 import * as SecureStore from 'expo-secure-store';
 import ip from '../../../ip.json'
+import * as SecureStorage from 'expo-secure-store';
 
 async function save(key, value) {
   await SecureStore.setItemAsync(key, value);
@@ -17,7 +18,7 @@ const Signup = (props) => {
   const [Phonenumber, onChangePhone] = React.useState('');
   const [Password, onChangePass] = React.useState('');
 
-
+  const [token, settoken] = React.useState('');
   const handleclick = (e) => {
     e.preventDefault();
     login(Phonenumber,Password)
@@ -42,6 +43,17 @@ const Signup = (props) => {
       alert("invalid")
     }
   }
+  async function getValueFor(key) {
+    let result = await SecureStorage.getItemAsync(key);
+    if (result) {
+      navigation.navigate('Home')
+    } else {
+    }
+}
+  useEffect(() => {
+    getValueFor('jwt-token')
+  }, [token])
+  
 
   
   const { navigation } = props

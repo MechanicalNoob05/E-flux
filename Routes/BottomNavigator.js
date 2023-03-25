@@ -13,19 +13,7 @@ function MyTabs(props) {
 
     const { navigation } = props
     return (
-        <Tab.Navigator
-        
-            screenOptions={
-                {
-                    headerShown: false,
-                    tabBarStyle: { paddingBottom: 0 },
-                    tabBarActiveTintColor: 'blue',
-                    tabBarHideOnKeyboard: true,
-                    keyboardHidesTabBar: true
-
-                }
-            }
-        >
+        <Tab.Navigator>
             <Tab.Screen
                 name="Map" component={Map}
                 options={
