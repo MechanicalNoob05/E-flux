@@ -77,7 +77,7 @@ const Map_Display = ({ route, navigation }) => {
                     return (
                       <View key={slot._id} style={{ borderColor: '#cdcfd1', backgroundColor: '#f5fff7',
                       borderRadius: 5,
-                      borderWidth: 1, marginTop:10}}>
+                      borderWidth: 1, marginTop:10  }}>
                         <View style={{paddingVertical: 10, paddingHorizontal: 32,}}> 
                         <Text onPress={() => { }}
                           style={
