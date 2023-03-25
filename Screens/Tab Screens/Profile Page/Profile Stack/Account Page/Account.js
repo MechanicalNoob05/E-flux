@@ -10,6 +10,7 @@ const Account = (props) => {
   const firstName = fullname[0];
   const lastName = fullname[1];
   const { navigation } = props
+
   return (
     <ScrollView>
       <View style={styles.container}>

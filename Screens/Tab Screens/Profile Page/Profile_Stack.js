@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import Profile from './Profile Stack/Profile_Option_Page/Profile';
@@ -10,10 +10,23 @@ import CurrentBooking from './Profile Stack/Current Booking/CurrentBooking';
 import FAQ from './Profile Stack/FAQ/FAQ';
 import History from './Profile Stack/History/History';
 import Help from './Profile Stack/Help/Help';
+import * as SecureStorage from 'expo-secure-store';
+import ip from '../../../ip.json'
+
 const PStack = createStackNavigator();
 
 const Map = (props) => {
-
+  const [token, settoken] = React.useState('');
+  async function getValueFor(key) {
+      let result = await SecureStorage.getItemAsync(key);
+      if (result) {
+          settoken(result)
+      } else {
+      }
+  }
+  useEffect(() => {
+      getValueFor("jwt-token")
+  }, [token])
   const { navigation } = props
   return (
     <NavigationContainer independent={true} >
@@ -27,6 +40,7 @@ const Map = (props) => {
           name='Account'
           component={Account}
           options={{ headerShown: false }}
+          initialParams={{token:"token"}}
         />
         <PStack.Screen
           name='Password'

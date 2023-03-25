@@ -1,7 +1,7 @@
-import React, { useState, useCallback, useRef, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Dimensions } from 'react-native';
-import { StyleSheet, View, Button, ScrollView, FlatList } from 'react-native'
-import { Input, SearchBar, Text } from 'react-native-elements';
+import { StyleSheet, View } from 'react-native'
+import {  SearchBar, Text } from 'react-native-elements';
 import MapView, { Marker } from 'react-native-maps';
 import ip from '../../../../ip.json'
 

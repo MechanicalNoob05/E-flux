@@ -40,6 +40,8 @@ const Profile = (props) => {
         getValueFor("jwt-token")
         getProfileInfo(token)
     }, [token])
+
+    
     const list = [
         {
             title: 'Account',
