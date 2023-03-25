@@ -3,23 +3,11 @@ import { Dimensions } from 'react-native';
 import { StyleSheet, View, Button, ScrollView,FlatList } from 'react-native'
 import { Input, SearchBar, Text } from 'react-native-elements';
 import MapView, { Marker } from 'react-native-maps';
+import Ionicons from 'react-native-vector-icons/Ionicons'
 
 const {width, height} = Dimensions.get('window')
 const Chargeup = () => {
-  const DATA = [
-    {
-      id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
-      title: 'First Item',
-    },
-    {
-      id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f63',
-      title: 'Second Item',
-    },
-    {
-      id: '58694a0f-3da1-471f-bd96-145571e29d72',
-      title: 'Third Item',
-    },
-  ];
+
   const [region, setRegion] = useState({
     latitude: 51.5079145,
     longitude: -0.0899163,
@@ -72,14 +60,20 @@ const [search , setSearch] = React.useState('');
       
     </MapView>
 
-    <SearchBar placeholder='Search...' lightTheme='1' value={search} onChangeText={setSearch} />
     <View style={styles.menu}>
-    <FlatList
-        data={DATA}
-        renderItem={({item}) => <Item title={item.title} />}
-        keyExtractor={item => item.id}
-      />
-
+    <View style={styles.card}>
+            <Text h4 style={{padding: 5}}>
+              Manish Garage Electric Charging Station
+            </Text>
+           
+           <View style={{flex:1 , flexDirection: 'row',
+    flexWrap: 'wrap'}}>
+      
+             <Text><Ionicons name='location'/>Panvel  | </Text> 
+              <Text> <Ionicons name='battery-charging'/> 5 Charging Ports</Text>
+           </View>
+            
+            </View>
     </View>
 <View>
 
@@ -94,12 +88,19 @@ flex:1,
 zIndex: 3,
 elevation: 3, // works on android
  },
+ card:{
+  backgroundColor:'white',
+  borderRadius: 15,
+  margin: 10,
+  padding: 10
+
+
+},
  menu:{
-  padding: 20,
   width: width,
   margin: 1,
-  height: 10,
-  backgroundColor: 'red',
+  minHeight: 105,
+ maxHeight: 200,
   bottom: 10,
   position: 'absolute',
 
@@ -109,10 +110,7 @@ elevation: 3, // works on android
 
   },
 
-  card: {
-    justifyContent: 'center',
-    height: 700
-  }
+
 })
 
 export default Chargeup
