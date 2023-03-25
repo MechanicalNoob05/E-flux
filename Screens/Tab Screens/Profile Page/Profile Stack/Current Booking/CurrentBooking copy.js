@@ -15,8 +15,7 @@ const CurrentBooking = (props) => {
   const handleconfirm = (Bookingid) => {
     confirmBookings(token, Bookingid)
   }
-  const handleconfirmbattery = (Batterybookingid) => (e) => {
-    e.preventDefault();
+  const handleconfirmbattery = (Batterybookingid) => {
     confirmBattery(token, Batterybookingid)
   }
   const handledelete = (Bookingid) => {
@@ -66,7 +65,7 @@ const CurrentBooking = (props) => {
     const json5 = await response.json()
     // console.log(json5)
     if (json5.savedBooking) {
-      alert('Confirmed')
+      navigation.navigate('Profile')
     } else {
       alert(json5.err)
     }
@@ -108,7 +107,8 @@ const CurrentBooking = (props) => {
     const json5 = await response.json()
     // console.log(json5)
     if (json5.savedBooking) {
-      alert("Confirmed")
+      // navigation.navigate('Profile')
+      // alert('Confirmation done')
     } else {
       alert(json5.err)
     }
