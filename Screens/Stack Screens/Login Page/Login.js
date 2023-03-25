@@ -11,11 +11,9 @@ async function save(key, value) {
 
 }
 const Signup = (props) => {
-<<<<<<< HEAD
-  const [phone, onChangePhone] = React.useState('');
-  const [pass, onChangePass] = React.useState('');
-  
-=======
+
+
+
   const [Phonenumber, onChangePhone] = React.useState('');
   const [Password, onChangePass] = React.useState('');
 
@@ -26,7 +24,7 @@ const Signup = (props) => {
   }
   const login = async (Phonenumber,Password) => {
     // Default options are marked with *
-    const response = await fetch('http://192.168.0.247:3001/app/login', {
+    const response = await fetch('http://192.168.137.199:3001/app/login', {
       method: "POST",
       headers: {
         "Content-type": "application/json;charset=UTF-8",
@@ -43,7 +41,6 @@ const Signup = (props) => {
       alert("invalid")
     }
   }
->>>>>>> 42bc93dbf6e7ed6e2f954d91184454b9caebb72f
   const { navigation } = props
   return (
     <ScrollView>
@@ -96,11 +93,9 @@ const Signup = (props) => {
 
                 }
               }
-<<<<<<< HEAD
-              onPress={() => { navigation.navigate('Home');}}
-=======
+
+
               onPress={handleclick}
->>>>>>> 42bc93dbf6e7ed6e2f954d91184454b9caebb72f
               title="Sign In"
             />
           </View>
