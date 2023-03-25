@@ -12,7 +12,15 @@ const CurrentBooking = (props) => {
   const [token, settoken] = React.useState('');
 
 
-
+  const handleconfirm = (Bookingid) => {
+    confirmBookings(token,Bookingid)
+  }
+  const handleconfirmbattery = (Batterybookingid) => {
+    confirmBattery(token,Batterybookingid)
+  }
+  const handledelete = (Bookingid) => {
+    deleteBookings(token,Bookingid)
+  }
   const [battery, setBattery] = React.useState([])
   const [station, setStation] = React.useState([]);
 
@@ -41,6 +49,71 @@ const CurrentBooking = (props) => {
     } else {
     }
   }
+
+
+  const confirmBookings = async (token, Bookingid) => {
+    // Default options are marked with *
+    const response = await fetch(`http://${ip.ip}:3001/app/adddeleterequest`, {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json;charset=UTF-8",
+        "auth-token": token
+      },
+      // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+      body: JSON.stringify({Bookingid}) // body data type must match "Content-Type" header
+    });
+    const json5 = await response.json()
+    // console.log(json5)
+    if (json5.savedBooking) {
+      // navigation.navigate('Profile')
+    } else {
+      alert(json5.err)
+    }
+  }
+
+
+  const deleteBookings = async (token, Bookingid) => {
+    // Default options are marked with *
+    const response = await fetch(`http://${ip.ip}:3001/app/getbooking`, {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json;charset=UTF-8",
+        "auth-token": token
+      },
+      // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+      body: JSON.stringify({Bookingid}) // body data type must match "Content-Type" header
+    });
+    const json5 = await response.json()
+    // console.log(json5)
+    if (json5.data) {
+    } else {
+    }
+  }
+
+
+
+
+  const confirmBattery = async (token, Batterybookingid) => {
+    // Default options are marked with *
+    const response = await fetch(`http://${ip.ip}:3001/app/deletebatteryrequest`, {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json;charset=UTF-8",
+        "auth-token": token
+      },
+      // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+      body: JSON.stringify({Batterybookingid}) // body data type must match "Content-Type" header
+    });
+    const json5 = await response.json()
+    // console.log(json5)
+    if (json5.savedBooking) {
+      // navigation.navigate('Profile')
+    } else {
+      alert(json5.err)
+    }
+  }
+
+
   useEffect(() => {
     getValueFor("jwt-token")
     getBookings(token)
@@ -70,7 +143,7 @@ const CurrentBooking = (props) => {
                     <Text> <Ionicons name='time' />{slot.Station[0].Stationaddress}</Text>
                     {(slot.Deletestatus === false) ?
                       <View style={styles.button_grp}>
-                        <Button title='Done' color={'#32cd32'}></Button>
+                        <Button title='Done' onPress={handleconfirm(slot._id)} color={'#32cd32'}></Button>
                         <Button title='Cancel' color={'#ff5733'}></Button>
                       </View>
                       :
@@ -96,7 +169,7 @@ const CurrentBooking = (props) => {
             battery ? (
               battery.map((slot) => {
                 return (
-                  <View style={styles.card} key={battery._id}>
+                  <View style={styles.card} key={slot._id}>
                     <Text h4 style={{ padding: 5 }}>
                       {slot.Station[0].Stationname}
                     </Text>
@@ -106,7 +179,7 @@ const CurrentBooking = (props) => {
                     <Text> <Ionicons name='time' />{slot.Battery[0].Batterycapacity}</Text>
                     <Text> <Ionicons name='time' />{slot.Station[0].Stationaddress}</Text>
                     <View style={styles.button_grp}>
-                      <Button title='Confirm' color={'#32cd32'}></Button>
+                      <Button title='Confirm' onPress={handleconfirmbattery(slot._id)} color={'#32cd32'}></Button>
                       <Button title='Cancel' color={'#ff5733'}></Button>
                     </View>
                   </View>
