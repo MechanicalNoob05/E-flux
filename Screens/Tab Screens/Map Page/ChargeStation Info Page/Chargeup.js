@@ -116,8 +116,8 @@ const Chargeup = (props) => {
 
                     <Text><Ionicons name='location' />{item.City}  | </Text>
                     <Text> <Ionicons name='battery-charging' /> {item.Slot.length} Charging Ports</Text>
-                  </View>
                   <Text style={styles.address}> <Ionicons name='battery-charging' /> {item.Stationaddress}</Text>
+                  </View>
 
                 </View>
               )
@@ -147,7 +147,7 @@ const styles = StyleSheet.create({
     borderRadius: 15,
     margin: 10,
     padding: 10,
-    height: 150,
+    height: 160,
     textAlign: 'center',
     justifyContent: 'center'
 
@@ -162,7 +162,7 @@ const styles = StyleSheet.create({
 
   },
   address: {
-    paddingBottom: 30,
+    paddingTop:10,
   },
   map: {
 

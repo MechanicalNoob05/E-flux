@@ -1,8 +1,9 @@
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import React, { useEffect } from 'react'
-import { StyleSheet, View, Button } from 'react-native'
-import { Text } from 'react-native-elements'
+import { StyleSheet, View, Button, ScrollView } from 'react-native'
+import { Divider, Text } from 'react-native-elements'
 import * as SecureStorage from 'expo-secure-store';
+import openMap from 'react-native-open-maps';
 import ip from '../../../../../ip.json'
 
 
@@ -22,7 +23,9 @@ const CurrentBooking = (props) => {
     } else {
     }
   }
-
+  const map =  () => {
+    openMap({ start:"New York City, New York, NY",end:"SOHO, New York, NY",navigate:true});
+  }
   const getBookings = async (token) => {
     // Default options are marked with *
     const response = await fetch(`http://${ip.ip}:3001/app/getbooking`, {
@@ -54,66 +57,80 @@ const CurrentBooking = (props) => {
   const { navigation } = props
   return (
     <View style={styles.container}>
-      <Text>See your Upcoming Bookings</Text>
+      <Text style={styles.text}>Charging Slots</Text>
+      <ScrollView>
+        <View>
+          {
+            station ? (
+              station.map((slot) => {
+                return (
+                  <View style={styles.card}>
+                    <Text h4 style={{ padding: 5 }}>
+                      {slot.Station[0].Stationname}
+                    </Text>
 
-      <View>
-        {
-          station ? (
-            station.map((slot) => {
-              return (
-                <View style={styles.card}>
-                  <Text h4 style={{ padding: 5 }}>
-                    {slot.Station[0].Stationname}
-                  </Text>
+                    <Text> <Ionicons name='calendar-outline' /> 15 March</Text>
+                    <Text> <Ionicons name='time' />{slot.Timeslot[0].Duration}</Text>
+                    <Button title='View Location on Maps' onPress={map
+                    }></Button>
+                  </View>
+                )
+              }))
+              : (
+                <View>
 
-                  <Text> <Ionicons name='calendar-outline' /> 15 March</Text>
-                  <Text> <Ionicons name='time' />{slot.Timeslot[0].Duration}</Text>
-                  <Button title='View Location on Maps'></Button>
                 </View>
+
               )
-            }))
-            : (
-              <View>
+          }
+        </View>
+        <Divider color='black'></Divider>
+        <Text style={styles.text}>Battery Replacement</Text>
+        <View>
+          {
+            battery ? (
+              battery.map((slot) => {
+                return (
+                  <View style={styles.card}>
+                    <Text h4 style={{ padding: 5 }}>
+                      {slot.Station[0].Stationname}
+                    </Text>
 
-              </View>
+                    <Text> <Ionicons name='calendar-outline' /> 15 March</Text>
+                    <Text> <Ionicons name='time' />{slot.Battery[0].Batteryname}</Text>
+                    <Text> <Ionicons name='time' />{slot.Battery[0].Batterycapacity}</Text>
+                    <Button title='View Location on Maps'></Button>
+                  </View>
+                )
+              }))
+              : (
+                <View>
 
-            )
-        }
-      </View>
-      <View>
-        {
-          battery ? (
-            battery.map((slot) => {
-              return (
-                <View style={styles.card}>
-                  <Text h4 style={{ padding: 5 }}>
-                    {slot.Station[0].Stationname}
-                  </Text>
-
-                  <Text> <Ionicons name='calendar-outline' /> 15 March</Text>
-                  <Text> <Ionicons name='time' />{slot.Battery[0].Batteryname}</Text>
-                  <Text> <Ionicons name='time' />{slot.Battery[0].Batterycapacity}</Text>
-                  <Button title='View Location on Maps'></Button>
                 </View>
+
               )
-            }))
-            : (
-              <View>
-
-              </View>
-
-            )
-        }
-      </View>
+          }
+        </View>
+      </ScrollView>
     </View>)
 }
 const styles = StyleSheet.create({
-  container: { padding: 24 },
+  container: { 
+    paddingHorizontal: 10, 
+    paddingBottom:50
+  },
 
   card: {
-    padding: 10,
+    padding: 20,
     backgroundColor: '#fff',
-    borderRadius: 15
+    borderRadius: 15,
+    marginBottom: 10
+  },
+  text: {
+    fontSize: 20,
+    fontWeight:'bold',
+    marginVertical:10,
+    textAlign:'center'
   }
 })
 export default CurrentBooking
