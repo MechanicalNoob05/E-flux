@@ -74,11 +74,22 @@ const Chargeup = (props) => {
           longitudeDelta: 0.0421,
         }}>
 
-        <Marker key={1} coordinate={{ latitude: 19.0761, longitude: 72.8788 }}
-          title="Mumbai" description='This is Mumbairr'>
+
+        {
+          Station.map((item) => {
+
+            return (
+              <Marker key={item._id} coordinate={{ latitude: parseFloat(item.Latitude), longitude: parseFloat(item.Longitude) }}
+                title={item.Stationname} description={item.Description}>
 
 
-        </Marker>
+              </Marker>
+
+            )
+
+
+          })
+        }
         <Marker key={2} coordinate={{ latitude: 18.981239, longitude: 73.133338 }}></Marker>
 
 
@@ -90,27 +101,30 @@ const Chargeup = (props) => {
         <Swiper loop={false}>
 
           {
-            Station.map((item) => (
-              <View style={styles.card} key={item._id} onPress={}>
-                <Text h4 style={{ padding: 5 }} onPress={() => { navigation.navigate("M_Display", { id: item._id }) }}>
-                  {item.Stationname}
-                </Text>
+            Station.map((item) => {
+              return (
 
-                <View style={{
-                  flex: 1, flexDirection: 'row',
-                  flexWrap: 'wrap'
-                }}>
+                <View style={styles.card} key={item._id}>
+                  <Text h4 style={{ padding: 5 }} onPress={() => { navigation.navigate("M_Display", { id: item._id }) }}>
+                    {item.Stationname}
+                  </Text>
 
-                  <Text><Ionicons name='location' />{item.City}  | </Text>
-                  <Text> <Ionicons name='battery-charging' /> {item.Slot.length} Charging Ports</Text>
+                  <View style={{
+                    flex: 1, flexDirection: 'row',
+                    flexWrap: 'wrap'
+                  }}>
+
+                    <Text><Ionicons name='location' />{item.City}  | </Text>
+                    <Text> <Ionicons name='battery-charging' /> {item.Slot.length} Charging Ports</Text>
+                  </View>
+                  <Text style={styles.address}> <Ionicons name='battery-charging' /> {item.Stationaddress}</Text>
+
                 </View>
-                <Text style={styles.address}> <Ionicons name='battery-charging' /> {item.Stationaddress}</Text>
-
-              </View>
+              )
 
 
 
-            ))
+            })
           }
 
         </Swiper>
@@ -147,8 +161,8 @@ const styles = StyleSheet.create({
     position: 'absolute',
 
   },
-  address:{
-    paddingBottom:30,
+  address: {
+    paddingBottom: 30,
   },
   map: {
 
