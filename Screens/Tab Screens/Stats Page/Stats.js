@@ -8,7 +8,6 @@ const Stats = (props) => {
     return (
       <ScrollView>
         <View style={styles.container}>
-<Image source={{uri: 'https://images.unsplash.com/photo-1614288532696-203f89dc0db4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=327&q=80'}}/>
 
         </View>
         
