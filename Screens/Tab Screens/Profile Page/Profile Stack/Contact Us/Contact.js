@@ -46,7 +46,7 @@ const Contact = (props) => {
 <View style={{padding: 10,  textAlign: 'center'}}>
   <Text style={{fontSize: 16, textAlign: 'center'}}><Ionicons name='mail-outline' style={{fontSize: 18, color: 'blue'}} /> customercare@eflux.com </Text>
   <Text style={{fontSize: 16, textAlign: 'center'}}><Ionicons name='call-outline' style={{fontSize: 18, color: 'skyblue'}} /> +91 9163756591 </Text>
-  <Text style={{fontSize: 16, textAlign: 'center'}}><Ionicons name='location-outline' style={{fontSize: 18, color: 'red'}} /> Mumbai, India, 410206S </Text>
+  <Text style={{fontSize: 16, textAlign: 'center'   }}><Ionicons name='location-outline' style={{fontSize: 18, color: 'red'}} /> Mumbai, India, 410206S </Text>
 
 </View>
     </View></ScrollView>)
