@@ -46,8 +46,7 @@ const List = (props) => {
                 friction={95} //
                 tension={100} // These props are passed to the parent component (here TouchableScale)
                 activeScale={0.95} >
-                <Image source={'https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Dwayne_Johnson_2014_%28cropped%29.jpg/640px-Dwayne_Johnson_2014_%28cropped%29.jpg'} style={{ width: 40, height: 40 }}
-                />
+                
                 <ListItem.Content>
                   <ListItem.Title>{item.Stationname}</ListItem.Title>
                   <ListItem.Subtitle>
@@ -68,13 +67,14 @@ const List = (props) => {
           }
         </View>
       </View>
+      <Text style={{textAlign:'center'}}>End of The List</Text>
     </ScrollView>
   )
 }
 const styles = StyleSheet.create({
   container: {
     backgroundColor: 'white',
-    padding: 10,
+    marginVertical: 10
 
   }
 })

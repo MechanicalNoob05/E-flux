@@ -129,10 +129,7 @@ const styles = StyleSheet.create({
 
   },
 
-  card: {
-    justifyContent: 'center',
-    height: 700
-  }
+
 })
 
 export default Chargeup
