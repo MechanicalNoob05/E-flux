@@ -4,6 +4,7 @@ import { StyleSheet, View, Button, ScrollView, FlatList } from 'react-native'
 import { Input, SearchBar, Text } from 'react-native-elements';
 import MapView, { Marker } from 'react-native-maps';
 import Ionicons from 'react-native-vector-icons/Ionicons'
+import Swiper from 'react-native-swiper';
 import ip from '../../../../ip.json'
 
 const { width, height } = Dimensions.get('window')
@@ -84,31 +85,36 @@ const Chargeup = (props) => {
 
 
       </MapView>
+      <View style={styles.menu}>
 
-      <ScrollView style={styles.menu}>
-        {
-          Station.map((item) => (
-            <View style={styles.card} key={item._id}>
-              <Text h4 style={{ padding: 5 }} onPress={() => { navigation.navigate("M_Display" ,{id:item._id}) }}>
-                {item.Stationname}
-              </Text>
+        <Swiper loop={false}>
 
-              <View style={{
-                flex: 1, flexDirection: 'row',
-                flexWrap: 'wrap'
-              }}>
+          {
+            Station.map((item) => (
+              <View style={styles.card} key={item._id} onPress={}>
+                <Text h4 style={{ padding: 5 }} onPress={() => { navigation.navigate("M_Display", { id: item._id }) }}>
+                  {item.Stationname}
+                </Text>
 
-                <Text><Ionicons name='location' />{item.City}  | </Text>
-                <Text> <Ionicons name='battery-charging' /> {item.Slot.length} Charging Ports</Text>
+                <View style={{
+                  flex: 1, flexDirection: 'row',
+                  flexWrap: 'wrap'
+                }}>
+
+                  <Text><Ionicons name='location' />{item.City}  | </Text>
+                  <Text> <Ionicons name='battery-charging' /> {item.Slot.length} Charging Ports</Text>
+                </View>
+                <Text style={styles.address}> <Ionicons name='battery-charging' /> {item.Stationaddress}</Text>
+
               </View>
 
-            </View>
 
 
+            ))
+          }
 
-          ))
-        }
-      </ScrollView>
+        </Swiper>
+      </View>
       <View>
 
       </View>
@@ -126,8 +132,10 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     borderRadius: 15,
     margin: 10,
-    padding: 10
-
+    padding: 10,
+    height: 150,
+    textAlign: 'center',
+    justifyContent: 'center'
 
   },
   menu: {
@@ -138,6 +146,9 @@ const styles = StyleSheet.create({
     bottom: 10,
     position: 'absolute',
 
+  },
+  address:{
+    paddingBottom:30,
   },
   map: {
 
