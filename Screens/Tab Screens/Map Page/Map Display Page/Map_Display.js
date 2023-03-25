@@ -42,7 +42,7 @@ const Map_Display = ({ route, navigation }) => {
       <View style={styles.container}>
         {Station ? (Station.map((item) => {
           return (
-            <ScrollView>
+            <ScrollView key={item._id}>
               <Image style={{ height: 250 }} source={image} >
               </Image>
               <View style={{ flexDirection: 'row', alignItems: 'center' }}>
