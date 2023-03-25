@@ -19,6 +19,7 @@ const StationSchema = mongoose.Schema(
       Batterybookings: [{type: mongoose.Schema.Types.ObjectId, required: false, ref: "Batterybookings"}],
       Battery: [{type: mongoose.Schema.Types.ObjectId, required: false, ref: "Battery"}],
       pic: { type: String,required: false,default:"https://icon-library.com/images/anonymous-avatar-icon/anonymous-avatar-icon-25.jpg",},
+      Link: { type: String,required: false,default:"https://goo.gl/maps/xu31d6mKRews7gP4A",}
     },
     {
       timestamps: true,

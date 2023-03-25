@@ -5,6 +5,7 @@ const BatterybookingSchema = mongoose.Schema(
       Battery: [{type: mongoose.Schema.Types.ObjectId, required: false, ref: "Battery"}],
       Station: [{type: mongoose.Schema.Types.ObjectId, required: false, ref: "Station"}],
       Deletestatus: {type: Boolean, required: false, default: false,},
+      Date: {type: String,required: true,},
     },
     {
       timestamps: true,

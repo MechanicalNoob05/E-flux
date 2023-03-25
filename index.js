@@ -37,6 +37,8 @@ app.use('/app/gethistory',require('./routes/Get/Gethistory'))
 
 app.use('/app/deletebooking',require('./routes/Delete/Deletebooking'))
 app.use('/app/deletebatterybooking',require('./routes/Delete/Deletebatterybooking'))
+app.use('/app/deletebookingid',require('./routes/Delete/Deletebookingid'))
+app.use('/app/deletebatteryid',require('./routes/Delete/Deletebatteryid'))
 
 
 app.use('/app/update',require('./routes/update/updatecustomer'))

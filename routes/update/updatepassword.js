@@ -15,7 +15,7 @@ router.post('/', fetchuser, async (req, res) => {
         }
         const passwordcompare= await bcrypt.compare(oldpassword,Customer.Password)
         if (!passwordcompare) {
-          return res.status(400).json({success,errors: errors.array()});
+          return res.status(400).json({errors:"password does not match"});
         }
         const salt = await bcrypt.genSalt();
         const passwordHash = await bcrypt.hash(Newpassword,salt);

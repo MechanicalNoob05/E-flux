@@ -15,7 +15,8 @@ router.post('/',fetchuser,async(req, res) => {
             Timeslot: Timeslot,
             Slot: Slot,
             Station: Stationid,
-            Customer:req.user.id
+            Customer:req.user.id,
+            Date:req.body.Date
         });
         const savedBooking = await Booking.save();
         let filter = {_id: Stationid};

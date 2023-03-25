@@ -6,6 +6,7 @@ const BookingSchema = mongoose.Schema(
       Timeslot: [{type: mongoose.Schema.Types.ObjectId, required: false, ref: "Timeslot"}],
       Station: [{type: mongoose.Schema.Types.ObjectId, required: false, ref: "Station"}],
       Deletestatus: {type: Boolean, required: false, default: false,},
+      Date: {type: String,required: true,},
     },
     {
       timestamps: true,
