@@ -91,7 +91,7 @@ const Battery_Details = ({ route, navigation }) => {
                           <Text onPress={() => { }}
                             style={
                               {
-                                paddding: 2,
+                                padding: 2,
                                 textAlign: 'center',
                                 fontSize: 16
                               }

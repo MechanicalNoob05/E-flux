@@ -75,7 +75,7 @@ const Admin_Home = (props) => {
 />
 <Text h5 style={{margin: 10}}>All Bookings</Text>
 <ScrollView>
-   <ListItem style={{borderColor: '#f2f2f2', borderBottomWidth:1, borderTopWidth:1}}
+   <ListItem style={{borderColor: '#f2f2f2', borderBottomWidth:1, borderTopWidth:1,borderRadius: 10, padding: 10}}
       // onPress={()=>navigation.navigate(item.link)}
       
           Component={TouchableScale}
@@ -83,7 +83,53 @@ const Admin_Home = (props) => {
           tension={100} // These props are passed to the parent component (here TouchableScale)
           activeScale={0.95} >
 
-          <ListItem.Content>
+          <ListItem.Content >
+              <ListItem.Title>User Name</ListItem.Title>
+              <ListItem.Subtitle>
+                  
+                  <Ionicons name="time" style={{width: 15}}/>
+              <Text>3PM-4PM   | </Text>  
+              <Ionicons name="battery-charging" style={{width: 15}}/>
+              <Text>Station No. 3</Text>  
+                
+                  
+                </ListItem.Subtitle>
+
+          </ListItem.Content>
+          <ListItem.Subtitle><Text>24 March</Text></ListItem.Subtitle>
+      </ListItem>
+      <ListItem style={{borderColor: '#f2f2f2', borderBottomWidth:1, borderTopWidth:1,borderRadius: 10, padding: 10}}
+      // onPress={()=>navigation.navigate(item.link)}
+      
+          Component={TouchableScale}
+          friction={95} //
+          tension={100} // These props are passed to the parent component (here TouchableScale)
+          activeScale={0.95} >
+
+          <ListItem.Content >
+              <ListItem.Title>User Name</ListItem.Title>
+              <ListItem.Subtitle>
+                  
+                  <Ionicons name="time" style={{width: 15}}/>
+              <Text>3PM-4PM   | </Text>  
+              <Ionicons name="battery-charging" style={{width: 15}}/>
+              <Text>Station No. 3</Text>  
+                
+                  
+                </ListItem.Subtitle>
+
+          </ListItem.Content>
+          <ListItem.Subtitle><Text>24 March</Text></ListItem.Subtitle>
+      </ListItem>
+      <ListItem style={{borderColor: '#f2f2f2', borderBottomWidth:1, borderTopWidth:1,borderRadius: 10, padding: 10}}
+      // onPress={()=>navigation.navigate(item.link)}
+      
+          Component={TouchableScale}
+          friction={95} //
+          tension={100} // These props are passed to the parent component (here TouchableScale)
+          activeScale={0.95} >
+
+          <ListItem.Content >
               <ListItem.Title>User Name</ListItem.Title>
               <ListItem.Subtitle>
                   

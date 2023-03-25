@@ -4,13 +4,18 @@ import { StyleSheet, View, Image } from 'react-native'
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import ip from '../../../../ip.json'
 import * as SecureStorage from 'expo-secure-store'
-import { Divider, Text } from 'react-native-elements'
-import TouchableScale from 'react-native-touchable-scale'
+import { Dialog, Divider, Text } from 'react-native-elements'
+import { SelectList } from 'react-native-dropdown-select-list'
+import { TextInput } from 'react-native-gesture-handler'
 
 const image = { uri: "https://images.hindustantimes.com/img/2022/01/28/1600x900/4f422c8e-8072-11ec-862a-ad8c40546e4c_1643398983603.jpg" }
 const Map_Display = ({ route, navigation }) => {
-  const [Station, setStation] = useState([])
+  const [Station, setStation] = useState([]);
+  const [visible1, setVisible1] = useState(false);
   
+  const toggleDialog1 = () => {
+    setVisible1(!visible1);
+  };
   async function getValueFor(key) {
     let result = await SecureStorage.getItemAsync(key);
     if (result) {
@@ -38,7 +43,17 @@ const Map_Display = ({ route, navigation }) => {
     useEffect(() => {
       getStation(route.params.id)
     }, [])
+    const [selected, setSelected] = React.useState("");
 
+    const data = [
+      {key:'1', value:'Mobiles', disabled:true},
+      {key:'2', value:'Appliances'},
+      {key:'3', value:'Cameras'},
+      {key:'4', value:'Computers', disabled:true},
+      {key:'5', value:'Vegetables'},
+      {key:'6', value:'Diary Products'},
+      {key:'7', value:'Drinks'},
+  ]
     return (
       
       <View style={styles.container}>
@@ -126,9 +141,39 @@ const Map_Display = ({ route, navigation }) => {
                 }
               </View>
             <View style={{marginVertical: 10 , marginBottom:  60}}>              
-            <Button title='Book' style={{marginTop: 10, height :30}}/>
+            <Button title='Book' style={{marginTop: 10, height :30}}   onPress={toggleDialog1}/>
 </View>
+<Dialog
+      isVisible={visible1}
+      onBackdropPress={toggleDialog1}
+    >
+      <Dialog.Title title="Fill the Below Form to Confirm your Booking"/>
+      <View>
+      <Text style={styles.text1}>
+        Select Available charging Slots
+      </Text>
+      <SelectList
+        setSelected={(val) => setSelected(val)} 
+        data={data} 
+        save="value"
+    />
+    <Text></Text>
 
+    <Text style={styles.text1}>Select available time slot</Text>
+    <SelectList
+        setSelected={(val) => setSelected(val)} 
+        data={data} 
+        save="value"
+    />
+<Text></Text>
+      <Text style={styles.text1}>Select the Date</Text>
+    <TextInput placeholder='Enter the Date....' />
+    <Text></Text>
+
+<Button title="Research your Slot"/>
+      </View>
+    
+    </Dialog>
             </ScrollView>
           )
         })) : (<Text>Chutiyap</Text>)}

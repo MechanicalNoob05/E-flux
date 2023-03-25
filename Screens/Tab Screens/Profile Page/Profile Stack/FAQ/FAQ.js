@@ -44,7 +44,7 @@ const FAQ = (props) => {
         <Text style={styles.text}>{key.question}</Text>
       </View>
     </CollapseHeader>
-    <CollapseBody style={styles.text2}>
+    <CollapseBody style={styles.text2} >
       <Text style={styles.text1}>{key.answer}</Text>
     </CollapseBody>
 </Collapse>))}
