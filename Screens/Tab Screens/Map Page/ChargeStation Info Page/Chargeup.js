@@ -116,8 +116,9 @@ const Chargeup = (props) => {
 
                     <Text><Ionicons name='location' />{item.City}  | </Text>
                     <Text> <Ionicons name='battery-charging' /> {item.Slot.length} Charging Ports</Text>
+                    <Text style={styles.address}> <Ionicons name='battery-charging' /> {item.Stationaddress}</Text>
                   </View>
-                  <Text style={styles.address}> <Ionicons name='battery-charging' /> {item.Stationaddress}</Text>
+                
 
                 </View>
               )
