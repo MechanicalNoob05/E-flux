@@ -21,9 +21,9 @@ const Signup = (props) => {
   const [token, settoken] = React.useState('');
   const handleclick = (e) => {
     e.preventDefault();
-    login(Phonenumber,Password)
+    login(Phonenumber, Password)
   }
-  const login = async (Phonenumber,Password) => {
+  const login = async (Phonenumber, Password) => {
     // Default options are marked with *
     const response = await fetch(`http://${ip.ip}:3001/app/login`, {
       method: "POST",
@@ -31,7 +31,7 @@ const Signup = (props) => {
         "Content-type": "application/json;charset=UTF-8",
       },
       // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
-      body: JSON.stringify({ Phonenumber,Password }) // body data type must match "Content-Type" header
+      body: JSON.stringify({ Phonenumber, Password }) // body data type must match "Content-Type" header
     });
     const json5 = await response.json()
     // console.log(json5)
@@ -49,13 +49,13 @@ const Signup = (props) => {
       navigation.navigate('Home')
     } else {
     }
-}
+  }
   useEffect(() => {
     getValueFor('jwt-token')
   }, [token])
-  
 
-  
+
+
   const { navigation } = props
   return (
     <ScrollView>
@@ -128,14 +128,14 @@ const Signup = (props) => {
 
           </View>
 
-       
+
         </View>
 
       </SafeAreaView>
       <View>
-            <Text style={{ textAlign: 'center' }}>Admin entry? <Text style={{ color: 'blue' }} onPress={() => navigation.navigate('Admin')}>Login</Text></Text>
+        <Text style={{ textAlign: 'center' }}>Admin entry? <Text style={{ color: 'blue' }} onPress={() => navigation.navigate('Admin')}>Login</Text></Text>
 
-          </View>
+      </View>
     </ScrollView>
   )
 }
