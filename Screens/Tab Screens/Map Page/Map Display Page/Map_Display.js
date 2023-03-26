@@ -7,12 +7,13 @@ import * as SecureStorage from 'expo-secure-store'
 import { Dialog, Divider, Text } from 'react-native-elements'
 import { SelectList } from 'react-native-dropdown-select-list'
 import { TextInput } from 'react-native-gesture-handler'
+import DatePicker from 'react-native-modern-datepicker';
 
 const image = { uri: "https://images.hindustantimes.com/img/2022/01/28/1600x900/4f422c8e-8072-11ec-862a-ad8c40546e4c_1643398983603.jpg" }
 const Map_Display = ({ route, navigation }) => {
   const [Station, setStation] = useState([]);
   const [visible1, setVisible1] = useState(false);
-  
+  const [selectedDate, setSelectedDate] = useState('');
   const toggleDialog1 = () => {
     setVisible1(!visible1);
   };
@@ -169,7 +170,9 @@ const Map_Display = ({ route, navigation }) => {
       <Text style={styles.text1}>Select the Date</Text>
     <TextInput placeholder='Enter the Date....' />
     <Text></Text>
-
+    <DatePicker
+      onSelectedChange={date => setSelectedDate(date)}
+    />
 <Button title="Research your Slot"/>
       </View>
     
