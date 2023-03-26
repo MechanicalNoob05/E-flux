@@ -12,7 +12,8 @@ const CurrentBooking = (props) => {
   const [token, settoken] = React.useState('');
 
 
-  const handleconfirm = (Bookingid) => {
+  const handleconfirm = (Bookingid) => (e) => {
+    e.preventDefault();
     confirmBookings(token, Bookingid)
   }
   const handleconfirmbattery = (Batterybookingid) => (e) => {
@@ -140,7 +141,7 @@ const CurrentBooking = (props) => {
                     </Text>
 
                     <Text> <Ionicons name='calendar-outline' /> 15 March</Text>
-                    <Text> <Ionicons name='time' />{slot.Timeslot[0].Duration}</Text>
+                    <Text> <Ionicons name='time' />{slot.Timeslot.Duration}</Text>
                     <Text> <Ionicons name='time' />{slot.Station[0].Stationaddress}</Text>
                     {(slot.Deletestatus === false) ?
                       <View style={styles.button_grp}>
